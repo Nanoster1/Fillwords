@@ -11,7 +11,7 @@ namespace Fillwords
         {
             Console.SetWindowSize(150, 40);
             Title.DrawTitle();
-            Title.DrawMenu(ConsoleColor.Black);
+            Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green);
         }
     }
     public class Title
@@ -37,7 +37,7 @@ namespace Fillwords
                 Console.WriteLine(name[i]);
             }
         }
-        public static void DrawMenu(ConsoleColor cc)
+        public static void DrawMenu(ConsoleColor ccRam, ConsoleColor ccNg, ConsoleColor ccRes, ConsoleColor ccRat, ConsoleColor ccEx)
         {
             SwapColor(ConsoleColor.Green);
             string[] ng =  {"█▄ █ █▀▀ █ █ █  █▀▀ ▄▀█ █▀▄▀█ █▀▀",
@@ -48,12 +48,16 @@ namespace Fillwords
                             "█▀▄ █▀█  █  █ █ ▀█ █▄█",};
             string[] ex =  {"█▀▀ ▀▄▀ █ ▀█▀",
                             "██▄ █ █ █  █",};
+            SwapColor(ccNg);
             WriteMenu(ng, 15);
+            SwapColor(ccRes);
             WriteMenu(res, 19);
+            SwapColor(ccRat);
             WriteMenu(rat, 23);
+            SwapColor(ccEx);
             WriteMenu(ex, 27);
             string[] ram = { "┌" + new string('─', ng[1].Length) + "┐", "" ,"" ,"└" + new string('─', ng[1].Length) + "┘"};
-            SwapColor(cc);
+            SwapColor(ccRam);
             WriteMenu(ram, 14);
             WriteMenu(ram, 18);
             WriteMenu(ram, 22);
