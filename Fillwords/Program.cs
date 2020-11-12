@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Drawing;
+using System.IO;
+
 
 namespace Fillwords
 {
@@ -6,6 +9,11 @@ namespace Fillwords
     {
         static void Main()
         {
+            Console.SetWindowSize(150, 40);
+            Title.DrawTitle();
+            Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green);
         }
     }
+
 }
+
