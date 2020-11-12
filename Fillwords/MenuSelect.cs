@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Fillwords
 {
     public class MenuSelect
     {
-        public static void SelectMenu()
+        public static int SelectMenu()
         {
-            ConsoleKeyInfo Key = Console.ReadKey();
             int i = 1;
-            do
-            {
-                Console.ForegroundColor = ConsoleColor.Black;
-                Key = Console.ReadKey();
+            Console.ForegroundColor = ConsoleColor.Black;
+            ConsoleKeyInfo Key = Console.ReadKey();
+                while (Key.Key != ConsoleKey.Enter)
+                {
                 if (Key.Key == ConsoleKey.W || Key.Key == ConsoleKey.UpArrow)
                 {
                     if (i == 2)
@@ -31,8 +31,6 @@ namespace Fillwords
                         Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Red, ConsoleColor.Green);
                         i--;
                     }
-                    else
-                        continue;
                 }
                 else if (Key.Key == ConsoleKey.S || Key.Key == ConsoleKey.DownArrow)
                 {
@@ -51,11 +49,10 @@ namespace Fillwords
                         Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Red);
                         i++;
                     }
-                    else
-                        continue;
                 }
-            }
-            while (Key.Key != ConsoleKey.Enter);
+                Key = Console.ReadKey();
+                }
+            return i;
         }
     }
 }

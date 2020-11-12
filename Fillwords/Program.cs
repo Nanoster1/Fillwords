@@ -12,8 +12,9 @@ namespace Fillwords
             Console.CursorVisible = false;
             Console.SetWindowSize(150, 40);
             Title.DrawTitle();
-            Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green);
-            MenuSelect.SelectMenu();
+            Title.DrawMenu(ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green); 
+            MenuDummy.IsPlug();
+
         }
     }
 
