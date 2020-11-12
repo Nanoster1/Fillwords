@@ -9,9 +9,11 @@ namespace Fillwords
     {
         static void Main()
         {
+            Console.CursorVisible = false;
             Console.SetWindowSize(150, 40);
             Title.DrawTitle();
-            Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green);
+            Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green);
+            MenuSelect.SelectMenu();
         }
     }
 
