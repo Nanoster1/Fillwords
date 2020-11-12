@@ -10,7 +10,10 @@ namespace Fillwords
         public static void IsPlug()
         {
             if (MenuSelect.SelectMenu() == 1)
+            {
+                MenuNewGame.Head();
                 WritePlug("New game");
+            }
             else if (MenuSelect.SelectMenu() == 2)
                 WritePlug("Resume");
             else if (MenuSelect.SelectMenu() == 3)
