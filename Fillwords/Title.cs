@@ -27,7 +27,7 @@ namespace Fillwords
                 Console.WriteLine(name[i]);
             }
         }
-        public static void DrawMenu(ConsoleColor ccRam, ConsoleColor ccNg, ConsoleColor ccRes, ConsoleColor ccRat, ConsoleColor ccEx)
+        public static void DrawMenu(ConsoleColor ccRam1, ConsoleColor ccRam2, ConsoleColor ccRam3, ConsoleColor ccRam4, ConsoleColor ccNg, ConsoleColor ccRes, ConsoleColor ccRat, ConsoleColor ccEx)
         {
             SwapColor(ConsoleColor.Green);
             string[] ng =  {"█▄ █ █▀▀ █ █ █  █▀▀ ▄▀█ █▀▄▀█ █▀▀",
@@ -47,10 +47,13 @@ namespace Fillwords
             SwapColor(ccEx);
             WriteMenu(ex, 27);
             string[] ram = { "┌" + new string('─', ng[1].Length) + "┐", "", "", "└" + new string('─', ng[1].Length) + "┘" };
-            SwapColor(ccRam);
+            SwapColor(ccRam1);
             WriteMenu(ram, 14);
+            SwapColor(ccRam2);
             WriteMenu(ram, 18);
+            SwapColor(ccRam3);
             WriteMenu(ram, 22);
+            SwapColor(ccRam4);
             WriteMenu(ram, 26);
         }
         static void WriteMenu(string[] ng, int x)
