@@ -16,10 +16,15 @@ namespace Fillwords
                 {
                     if (Key.Key == ConsoleKey.W || Key.Key == ConsoleKey.UpArrow)
                     {
-                        if (i == 2)
+                        if (i == 1)
                         {
-                                Title.DrawMenu(ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green);
-                                i--;
+                            Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Red);
+                            i = 4;
+                        }
+                        else if (i == 2)
+                        {
+                            Title.DrawMenu(ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green);
+                            i--;
                         }
                         else if (i == 3)
                         {
@@ -49,7 +54,12 @@ namespace Fillwords
                             Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Red);
                             i++;
                         }
-                    }
+                        else if (i == 4)
+                        {
+                            Title.DrawMenu(ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green);
+                            i = 1;
+                        }
+                }
                     Key = Console.ReadKey();
                 }
             return i;
