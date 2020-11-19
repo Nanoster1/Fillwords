@@ -14,43 +14,53 @@ namespace Fillwords
             ConsoleKeyInfo Key = Console.ReadKey();
                 while (Key.Key != ConsoleKey.Enter)
                 {
-                if (Key.Key == ConsoleKey.W || Key.Key == ConsoleKey.UpArrow)
-                {
-                    if (i == 2)
+                    if (Key.Key == ConsoleKey.W || Key.Key == ConsoleKey.UpArrow)
                     {
-                        Title.DrawMenu(ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green);
-                        i--;
+                        if (i == 1)
+                        {
+                            Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Red);
+                            i = 4;
+                        }
+                        else if (i == 2)
+                        {
+                            Title.DrawMenu(ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green);
+                            i--;
+                        }
+                        else if (i == 3)
+                        {
+                            Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green);
+                            i--;
+                        }
+                        else if (i == 4)
+                        {
+                            Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Red, ConsoleColor.Green);
+                            i--;
+                        }
                     }
-                    else if (i == 3)
+                    else if (Key.Key == ConsoleKey.S || Key.Key == ConsoleKey.DownArrow)
                     {
-                        Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green);
-                        i--;
-                    }
-                    else if (i == 4)
-                    {
-                        Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Red, ConsoleColor.Green);
-                        i--;
-                    }
+                        if (i == 1)
+                        {
+                            Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green);
+                            i++;
+                        }
+                        else if (i == 2)
+                        {
+                            Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Red, ConsoleColor.Green);
+                            i++;
+                        }
+                        else if (i == 3)
+                        {
+                            Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Red);
+                            i++;
+                        }
+                        else if (i == 4)
+                        {
+                            Title.DrawMenu(ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green);
+                            i = 1;
+                        }
                 }
-                else if (Key.Key == ConsoleKey.S || Key.Key == ConsoleKey.DownArrow)
-                {
-                    if (i == 1)
-                    {
-                        Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green);
-                        i++;
-                    }
-                    else if (i == 2)
-                    {
-                        Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Red, ConsoleColor.Green);
-                        i++;
-                    }
-                    else if (i == 3)
-                    {
-                        Title.DrawMenu(ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Green, ConsoleColor.Red);
-                        i++;
-                    }
-                }
-                Key = Console.ReadKey();
+                    Key = Console.ReadKey();
                 }
             return i;
         }

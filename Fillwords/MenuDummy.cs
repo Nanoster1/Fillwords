@@ -9,13 +9,17 @@ namespace Fillwords
     {
         public static void IsPlug()
         {
-            if (MenuSelect.SelectMenu() == 1)
+            int menuNum = MenuSelect.SelectMenu();
+            if (menuNum == 1)
+            {
+                MenuNewGame.Head();
                 WritePlug("New game");
-            else if (MenuSelect.SelectMenu() == 2)
+            }
+            else if (menuNum == 2)
                 WritePlug("Resume");
-            else if (MenuSelect.SelectMenu() == 3)
+            else if (menuNum == 3)
                 WritePlug("Rating");
-            else if (MenuSelect.SelectMenu() == 4)
+            else if (menuNum == 4)
                 WritePlug("Exit");
         }
         static void WritePlug(string b)
