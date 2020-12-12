@@ -64,5 +64,24 @@ namespace Fillwords
                 }
             return i;
         }
+        public static void UseMenu()
+        {
+            int menuNum = MenuSelect.SelectMenu();
+            switch (menuNum)
+            {
+                case 1:
+                    MenuNewGame.Head();
+                    break;
+                case 2:
+                    MenuResume.Head();
+                    break;
+                case 3:
+                    MenuRecords.Head();
+                    break;
+                case 4:
+                    MenuOptions.Head();
+                    break;
+            }
+        }
     }
 }
