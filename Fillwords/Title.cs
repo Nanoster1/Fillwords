@@ -6,7 +6,7 @@ namespace Fillwords
 {
     public class Title
     {
-        static void SwapColor(ConsoleColor f)
+        public static void SwapColor(ConsoleColor f)
         {
             Console.ForegroundColor = f;
         }
@@ -36,8 +36,8 @@ namespace Fillwords
                             "█▀▄ ██▄ ▄█ █▄█ █ ▀ █ ██▄",};
             string[] rat = {"█▀█ ▄▀█ ▀█▀ █ █▄ █ █▀▀",
                             "█▀▄ █▀█  █  █ █ ▀█ █▄█",};
-            string[] ex =  {"█▀▀ ▀▄▀ █ ▀█▀",
-                            "██▄ █ █ █  █",};
+            string[] opt = {"█▀█ █▀█ ▀█▀ █ █▀█ █▄ █ █▀",
+                            "█▄█ █▀▀  █  █ █▄█ █ ▀█ ▄█",};              
             SwapColor(ccNg);
             WriteMenu(ng, 15);
             SwapColor(ccRes);
@@ -45,7 +45,7 @@ namespace Fillwords
             SwapColor(ccRat);
             WriteMenu(rat, 23);
             SwapColor(ccEx);
-            WriteMenu(ex, 27);
+            WriteMenu(opt, 27);
             string[] ram = { "┌" + new string('─', ng[1].Length) + "┐", "", "", "└" + new string('─', ng[1].Length) + "┘" };
             SwapColor(ccRam1);
             WriteMenu(ram, 14);
@@ -56,11 +56,11 @@ namespace Fillwords
             SwapColor(ccRam4);
             WriteMenu(ram, 26);
         }
-        static void WriteMenu(string[] ng, int x)
+        public static void WriteMenu(string[] ng, int y)
         {
             for (int i = 0; i < ng.Length; i++)
             {
-                Console.SetCursorPosition(Console.WindowWidth / 2 - ng[0].Length / 2, i + x);
+                Console.SetCursorPosition(Console.WindowWidth / 2 - ng[0].Length / 2, i + y);
                 Console.WriteLine(ng[i]);
             }
         }

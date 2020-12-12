@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Fillwords
 {
@@ -11,19 +12,10 @@ namespace Fillwords
         public static List<string> words = new List<string>();
         public static List<string> usedWords = new List<string>();
         public static Stack<int> coords = new Stack<int>(); 
-        public static void WriteTable(int tableHeight, int tableWidth)
+        public static char[,] table;
+        public static void CreateFile()
         {
-            char[,] table = CreateTable(tableHeight, tableWidth);
-            for (int row = 0; row < table.GetLength(0); row++)
-            {
-                for (int col = 0; col < table.GetLength(1); col++)
-                    Console.Write(table[row, col] + " ");
-                Console.WriteLine();
-            }
-            for (int i = 0; i < usedWords.Count; i++)
-            {
-                Console.WriteLine(usedWords[i]);
-            }
+            File.AppendAllText("\\Dictionary.txt", "");
         }
         static bool CleanAr(char[,] table, int positionX, int positionY) //Проверка на пустой элемент массива
         {
