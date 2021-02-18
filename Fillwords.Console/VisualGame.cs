@@ -74,10 +74,6 @@
                 Console.WriteLine();
             }
             Console.ForegroundColor = ConsoleColor.White;
-            for (int i = 0; i < GameTable.UsedWords.Count; i++)
-            {
-                Console.WriteLine(GameTable.UsedWords[i]);
-            }
             Console.SetCursorPosition(20, 10);
             Console.Write($"Scores: {game.Gamer.Scores}");
         }
