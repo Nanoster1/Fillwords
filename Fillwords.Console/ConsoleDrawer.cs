@@ -64,9 +64,10 @@
         }
         public static void DrawRamRecords()
         {
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.Clear();
             Console.SetCursorPosition(0, 0);
             Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.White;
             Console.WriteLine('┌' + new string('─', Console.WindowWidth - 2) + '┐');
             for (int i = 1; i < Console.WindowHeight - 1; i++)
             {
