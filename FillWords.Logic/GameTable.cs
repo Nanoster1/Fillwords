@@ -1,22 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using System.Threading.Tasks;
 
-namespace Fillwords
+namespace FillWords.Logic
 {
-    public class GameTable
+    public static class GameTable
     {
-        public static string[] dictionary = File.ReadAllLines("\\Dictionary.txt");
-        public static List<string> words = new List<string>();
-        public static List<string> usedWords = new List<string>();
-        public static Stack<int> coords = new Stack<int>(); 
-        public static char[,] table;
-        public static void CreateFile()
-        {
-            File.AppendAllText("\\Dictionary.txt", "");
-        }
+        static List<string> TrueWords { get; set; } = new List<string>();
+        public static List<string> UsedWords { get; private set; } = new List<string>();
+        static Stack<int> Coords { get; set; } = new Stack<int>();
+        public static List<Word> Words { get; private set; } = new List<Word>();
         static bool CleanAr(char[,] table, int positionX, int positionY) //Проверка на пустой элемент массива
         {
             return table[positionY, positionX] == '\0';
@@ -41,27 +33,32 @@ namespace Fillwords
         }
         static void AddWords()
         {
-            for (int i = 0; i < dictionary.Length; i++)
+            for (int i = 0; i < Files.dictionary.Length; i++)
             {
-                words.Add(dictionary[i]);
+                TrueWords.Add(Files.dictionary[i]);
             }
         }
-        public static char[,] CreateTable(int tableHeight, int tableWidth)
+        public static char[,] CreateTable()
         {
+            Words.Clear();
+            int tableHeight = MenuOptionsData.TableHeight;
+            int tableWidth = MenuOptionsData.TableWidth;
             char[,] table = new char[tableHeight, tableWidth];
             Random random = new Random();
             AddWords();
             while (CheckAr(table, tableHeight, tableWidth))
             {
-                if (words.Count == 0)
+                if (TrueWords.Count == 0)
                 {
-                    usedWords.Clear();
-                    table = CreateTable(tableHeight, tableWidth);
+                    UsedWords.Clear();
+                    Words.Clear();
+                    table = CreateTable();
                     break;
                 }
+                Word word1 = new Word();
                 char[,] timeTable = (char[,])table.Clone();
-                string word = words[random.Next(0, words.Count)];
-                words.Remove(word);
+                string word = TrueWords[random.Next(0, TrueWords.Count)];
+                TrueWords.Remove(word);
                 int positionX = random.Next(0, tableWidth);
                 int positionY = random.Next(0, tableHeight);
                 while (!CleanAr(table, positionX, positionY))
@@ -70,49 +67,57 @@ namespace Fillwords
                     positionY = random.Next(0, tableHeight);
                 }
                 table[positionY, positionX] = word[0];
+                Coords.Push(positionY);
+                Coords.Push(positionX);
+
                 for (int i = 1; i < word.Length; i++)
                 {
                     if (TruePos(tableWidth, tableHeight, positionX + 1, positionY) && CleanAr(table, positionX + 1, positionY))
                     {
                         positionX++;
                         table[positionY, positionX] = word[i];
-                        coords.Push(positionY);
-                        coords.Push(positionX);
+                        Coords.Push(positionY);
+                        Coords.Push(positionX);
                     }
                     else if (TruePos(tableWidth, tableHeight, positionX, positionY - 1) && CleanAr(table, positionX, positionY - 1))
                     {
                         positionY--;
                         table[positionY, positionX] = word[i];
-                        coords.Push(positionY);
-                        coords.Push(positionX);
+                        Coords.Push(positionY);
+                        Coords.Push(positionX);
                     }
                     else if (TruePos(tableWidth, tableHeight, positionX - 1, positionY) && CleanAr(table, positionX - 1, positionY))
                     {
                         positionX--;
                         table[positionY, positionX] = word[i];
-                        coords.Push(positionY);
-                        coords.Push(positionX);
+                        Coords.Push(positionY);
+                        Coords.Push(positionX);
                     }
                     else if (TruePos(tableWidth, tableHeight, positionX, positionY + 1) && CleanAr(table, positionX, positionY + 1))
                     {
                         positionY++;
                         table[positionY, positionX] = word[i];
-                        coords.Push(positionY);
-                        coords.Push(positionX);
+                        Coords.Push(positionY);
+                        Coords.Push(positionX);
                     }
                     else
                     {
                         table = timeTable;
-                        coords.Clear();
+                        Coords.Clear();
                         break;
                     }
                 }
-                if (coords.Count == 0)
+                if (Coords.Count == 0)
                     continue;
-                for (int i = word.Length - 1; i > 1; i--)
+                UsedWords.Add(word);
+                word1.Name = word;
+                bool c = true;
+                for (int i = word.Length - 1; i >= 0; i--)
                 {
-                    positionX = coords.Pop();
-                    positionY = coords.Pop();
+                    positionX = Coords.Pop();
+                    positionY = Coords.Pop();
+                    word1.CoordsX.Add(positionX);
+                    word1.CoordsY.Add(positionY);
                     if (CheckFullElem(table, positionX, positionY, tableWidth, tableHeight) || CheckVariants(table, tableWidth, tableHeight, positionX, positionY))
                     {
                         continue;
@@ -120,11 +125,18 @@ namespace Fillwords
                     else
                     {
                         table = timeTable;
-                        coords.Clear();
+                        Coords.Clear();
+                        UsedWords.Remove(word);
+                        c = false;
                         break;
                     }
                 }
-                usedWords.Add(word);
+                if (c)
+                {
+                    word1.CoordsX.Reverse();
+                    word1.CoordsY.Reverse();
+                    Words.Add(word1);
+                }
             }
             return table;
         }
