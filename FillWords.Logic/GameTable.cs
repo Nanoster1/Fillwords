@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace FillWords.Logic
 {
@@ -9,6 +10,7 @@ namespace FillWords.Logic
         public static List<string> UsedWords { get; private set; } = new List<string>();
         static Stack<int> Coords { get; set; } = new Stack<int>();
         public static List<Word> Words { get; private set; } = new List<Word>();
+        static readonly string[] dictionary = File.ReadAllLines(Environment.CurrentDirectory + "\\Dictionary.txt");
         static bool CleanAr(char[,] table, int positionX, int positionY) //Проверка на пустой элемент массива
         {
             return table[positionY, positionX] == '\0';
@@ -33,9 +35,9 @@ namespace FillWords.Logic
         }
         static void AddWords()
         {
-            for (int i = 0; i < Files.dictionary.Length; i++)
+            for (int i = 0; i < dictionary.Length; i++)
             {
-                TrueWords.Add(Files.dictionary[i]);
+                TrueWords.Add(dictionary[i]);
             }
         }
         public static char[,] CreateTable()
