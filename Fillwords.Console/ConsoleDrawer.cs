@@ -4,6 +4,7 @@
     using FillWords.Logic;
     public static class Drawer
     {
+        static Files files = new Files();
         public static void DrawTitle()
         {
             string[] gameName = {"██████████  ████  ████       ████      ████   ████   ████   ██████████   ███████████  ███████████    █████",
@@ -56,10 +57,10 @@
         }
         public static void DrawTop()
         {
-            for (int i = 0; i < Files.Records.Length; i++)
+            for (int i = 0; i < files.Records.Length; i++)
             {
                 Console.SetCursorPosition(Console.WindowWidth - 41, 6 + i);
-                Console.Write(Files.Records[i]);
+                Console.Write(files.Records[i]);
             }
         }
         public static void DrawRamRecords()
@@ -150,7 +151,7 @@
             Console.ForegroundColor = ConsoleColor.Red;
             WriteMenu(text, 0);
             Console.SetCursorPosition(0, 7);
-            string[] saves = Files.Saves;
+            string[] saves = files.Saves;
             int k = 10;
             Console.ForegroundColor = ConsoleColor.White;
             for (int i = 0; i < saves.Length; i++)

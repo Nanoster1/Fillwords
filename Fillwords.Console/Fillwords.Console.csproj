@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <Reference Include="FillWords.Logic">
-      <HintPath>..\FillWords.Logic\bin\Release\netcoreapp3.1\win-x64\FillWords.Logic.dll</HintPath>
+      <HintPath>..\FillWords.Logic\bin\Debug\netcoreapp3.1\FillWords.Logic.dll</HintPath>
     </Reference>
   </ItemGroup>
 

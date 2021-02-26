@@ -13,7 +13,7 @@
             int x = Console.CursorLeft;
             int y = Console.CursorTop;
             string name = EnterName();
-            while (!Files.CheckNameInSaves(name))
+            while (!new Files().CheckNameInSaves(name))
             {
                 Console.Write("Save does not exist\r");
                 Thread.Sleep(1200);

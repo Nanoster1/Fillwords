@@ -11,6 +11,7 @@
         static int x = 0;
         static int y = 0;
         static List<string> usedWords = new List<string>();
+        static Files files = new Files();
         public static string Greetings()
         {
             Console.Clear();
@@ -27,7 +28,7 @@
 
         static void CheckName(ref string name)
         {
-            while (Files.CheckNameInSaves(name))
+            while (files.CheckNameInSaves(name))
             {
                 string error = "The name already exists";
                 Console.Write(error + "\r");
@@ -74,6 +75,10 @@
                 Console.WriteLine();
             }
             Console.ForegroundColor = ConsoleColor.White;
+            for (int i = 0; i < GameTable.UsedWords.Count; i++)
+            {
+                Console.WriteLine(GameTable.UsedWords[i]);
+            }
             Console.SetCursorPosition(20, 10);
             Console.Write($"Scores: {game.Gamer.Scores}");
         }
@@ -194,8 +199,8 @@
                 }
                 else if (Key.Key == ConsoleKey.Escape)
                 {
-                    Files.WriteRecord(game.Gamer);
-                    Files.CreateSave(game.Gamer);
+                    files.WriteRecord(game.Gamer);
+                    files.CreateSave(game.Gamer);
                     Environment.Exit(0);
                 }
                 Key = Console.ReadKey();
