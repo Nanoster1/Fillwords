@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fillwords.Console", "Fillwo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FillWords.Logic", "..\FillWords.Logic\FillWords.Logic.csproj", "{CD430CC6-7DD9-497A-AA1F-5673F60BFF6F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FillWords.Desktop", "..\Fillwords.Desktop\FillWords.Desktop.csproj", "{00D9EE59-49EE-4BEE-8A7D-80D65BD1FD14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CD430CC6-7DD9-497A-AA1F-5673F60BFF6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD430CC6-7DD9-497A-AA1F-5673F60BFF6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD430CC6-7DD9-497A-AA1F-5673F60BFF6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00D9EE59-49EE-4BEE-8A7D-80D65BD1FD14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00D9EE59-49EE-4BEE-8A7D-80D65BD1FD14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00D9EE59-49EE-4BEE-8A7D-80D65BD1FD14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00D9EE59-49EE-4BEE-8A7D-80D65BD1FD14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FillWords.Logic
 {
-    public class Files
+    public class FileWorker
     {
         public string[] Records { get; private set; } 
         public string[] Saves { get; private set; }
@@ -38,7 +38,7 @@ namespace FillWords.Logic
                 return new string[1] { "Saves not found" };
             return Directory.GetFiles(path);
         }
-        public Files()
+        public FileWorker()
         {
             Records = SetRecords();
             Saves = SetSaves();
@@ -47,12 +47,12 @@ namespace FillWords.Logic
         {
             string file = File.ReadAllText(path);
             string[] save = file.Split(' ');
-            MenuOptionsData.EnterColorTable((ConsoleColor)(int.Parse(save[2])));
-            MenuOptionsData.EnterCursorColor((ConsoleColor)(int.Parse(save[3])));
-            MenuOptionsData.EnterWordColor((ConsoleColor)(int.Parse(save[4])));
-            MenuOptionsData.EnterTrueWordColor((ConsoleColor)(int.Parse(save[5])));
-            MenuOptionsData.EnterTableHeight(int.Parse(save[6]));
-            MenuOptionsData.EnterTableWidth(int.Parse(save[7]));
+            MenuOptionsData.TableColor = (ConsoleColor)(int.Parse(save[2]));
+            MenuOptionsData.CursorColor = (ConsoleColor)(int.Parse(save[3]));
+            MenuOptionsData.WordColor= (ConsoleColor)(int.Parse(save[4]));
+            MenuOptionsData.TrueWordColor = (ConsoleColor)(int.Parse(save[5]));
+            MenuOptionsData.TableHeight = int.Parse(save[6]);
+            MenuOptionsData.TableWidth =int.Parse(save[7]);
             GamerInfo gamer = new GamerInfo(save[0], int.Parse(save[1]), new char[0,0]);
             return gamer;
         }
