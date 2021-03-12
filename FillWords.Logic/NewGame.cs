@@ -61,7 +61,7 @@ namespace FillWords.Logic
             }
             return word1;
         }
-        public void GetNextLvl()
+        public bool GetNextLvl()
         {
             if (GameTable.Words.Count == 0)
             {
@@ -69,7 +69,9 @@ namespace FillWords.Logic
                 Gamer.SetScores(ScoresForLvl);
                 ScoresForLvl = GameTable.Words.Count;
                 Words.Clear();
+                return true;
             }
+            return false;
         }
     }
 }
