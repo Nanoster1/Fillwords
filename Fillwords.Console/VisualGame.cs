@@ -11,7 +11,7 @@
         static int x = 0;
         static int y = 0;
         static List<string> usedWords = new List<string>();
-        static Files files = new Files();
+        static FileWorker files = new FileWorker();
         public static string Greetings()
         {
             Console.Clear();

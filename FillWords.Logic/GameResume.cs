@@ -8,7 +8,7 @@ namespace FillWords.Logic
     {
         public static NewGame GetGame(string name)
         {
-            Files files = new Files();
+            FileWorker files = new FileWorker();
             string[] saves = files.Saves;
             for (int i = 0; i < saves.Length; i++)
             {

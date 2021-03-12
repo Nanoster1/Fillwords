@@ -4,7 +4,7 @@
     using FillWords.Logic;
     public static class Drawer
     {
-        static Files files = new Files();
+        static FileWorker files = new FileWorker();
         public static void DrawTitle()
         {
             string[] gameName = {"██████████  ████  ████       ████      ████   ████   ████   ██████████   ███████████  ███████████    █████",
