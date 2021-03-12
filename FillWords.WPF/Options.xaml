@@ -1,0 +1,34 @@
+﻿<Window x:Class="FillWords.WPF.Options"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FillWords.WPF"
+        mc:Ignorable="d"
+        Title="Options" Height="450" Width="800">
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnTableColor"    Grid.Row="0" HorizontalAlignment="Right" FontSize="30"  Width="400">Цвет ячеек</Button>
+        <Button x:Name="btnCursorColor"   Grid.Row="1" FontSize="30">Цвет курсора</Button>
+        <Button x:Name="btnWordColor"     Grid.Row="2" FontSize="30">Цвет слов</Button>
+        <Button x:Name="btnTrueWordColor" Grid.Row="3" FontSize="30">Цвет выделенных слов</Button>
+        <Button x:Name="btnSizeField"     Grid.Row="4" FontSize="30" Click="btnSizeField_Click">Размер поля</Button>
+        <StackPanel x:Name="spTableColor"    Grid.Row="0" Visibility="Hidden"></StackPanel>
+        <StackPanel x:Name="spCursorColor"   Grid.Row="1" Visibility="Hidden"></StackPanel>
+        <StackPanel x:Name="spWordColor"     Grid.Row="2" Visibility="Hidden"></StackPanel>
+        <StackPanel x:Name="spTrueWordColor" Grid.Row="3" Visibility="Hidden"></StackPanel>
+        <StackPanel x:Name="spSizeField"     Grid.Row="4" Visibility="Hidden" Orientation="Vertical" Background="Red">
+            <Label HorizontalContentAlignment="Center" Foreground="White">Высота поля</Label>
+            <TextBox HorizontalContentAlignment="Center" x:Name="tbxFieldHeight"></TextBox>
+            <Label HorizontalContentAlignment="Center" Foreground="White">Ширина поля</Label>
+            <TextBox HorizontalContentAlignment="Center" x:Name="tbxFieldWidth"></TextBox>
+        </StackPanel>
+        <Button Grid.Row="0" Width="400" HorizontalAlignment="Left" FontSize="30" Click="Click_SaveOpt" IsCancel="True">Сохранить и выйти в меню</Button>
+    </Grid>
+</Window>
