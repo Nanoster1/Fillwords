@@ -16,7 +16,8 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Image Source="Resources/Records/Top.png" Grid.Column="2" Grid.Row="0"></Image>
+        <Image Source="Resources/Records/Top.png" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"></Image>
+        <Image Source="Resources/Records/Fire.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"></Image>
         <TextBlock x:Name="tbRecords" Foreground="White" Grid.Column="2" Grid.Row="1"></TextBlock>
         <Button Click="BtnBack_Click" IsCancel="True" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="50">В меню</Button>
     </Grid>

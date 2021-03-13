@@ -7,9 +7,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\MainWindow\Logo.png" />
+    <None Remove="Resources\Options\Options.png" />
+    <None Remove="Resources\Records\Fire.png" />
+    <None Remove="Resources\Records\Top.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="FillWords.Logic">
       <HintPath>..\FillWords.Logic\bin\Debug\netcoreapp3.1\FillWords.Logic.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\MainWindow\Logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Options\Options.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Records\Fire.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Records\Top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

@@ -46,7 +46,7 @@ namespace FillWords.WPF
             {
                 tbxName1.Text = "Имя уже используется";
             }
-            else if (tbxName1.Text == null)
+            else if (tbxName1.Text == "")
             {
                 tbxName1.Text = "Введите имя";
             }
@@ -81,7 +81,7 @@ namespace FillWords.WPF
                 else
                     text.Append(fileWorker.Saves[i].Split("\\")[^1].Replace(".txt", ""));
             }
-            MessageBox.Show(text.ToString());
+            MessageBox.Show(text.ToString(), "Сохранения");
         }
         private string GetRecords()
         {
