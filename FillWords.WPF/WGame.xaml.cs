@@ -18,36 +18,14 @@ namespace FillWords.WPF
     /// </summary>
     public partial class WGame : Window
     {
-        private NewGame Game { get; set; }
-        private Word ActualWord { get; set; } = new Word();
+        NewGame Game { get; set; }
+        Word ActualWord { get; set; } = new Word();
         public WGame(NewGame game)
         {
             InitializeComponent();
             Game = game;
-            CreateField();
-        }
-        public void CreateField()
-        {
-            Field.Width = 80 * MenuOptionsData.TableWidth;
-            char[,] table = Game.Gamer.Table;
-            for (int j = 0; j < MenuOptionsData.TableHeight; j++)
-            {
-                for (int i = 0; i < MenuOptionsData.TableWidth; i++)
-                {
-                    Label label = new Label();
-                    label.Content = table[j, i];
-                    label.HorizontalContentAlignment = HorizontalAlignment.Center;
-                    label.VerticalContentAlignment = VerticalAlignment.Center;
-                    label.Background = Brushes.Black;
-                    label.Foreground = Brushes.White;
-                    label.AddHandler(Label.MouseLeftButtonDownEvent, new MouseButtonEventHandler(Letter_Click));
-                    Field.Children.Add(label);
-                }
-            }
-            for (int i = 0; i < GameTable.Words.Count; i++)
-            {
-                tbWords.Text += GameTable.Words[i].Name + "\n";
-            }
+            RenderField.CreateField(Game, Field);
+            AddLabelHandlers();
         }
         private void Letter_Click(object sender, MouseButtonEventArgs e)
         {
@@ -68,7 +46,15 @@ namespace FillWords.WPF
             {
                 Field.Children.Clear();
                 tbWords.Text = "";
-                CreateField();
+                RenderField.CreateField(Game, Field);
+                AddLabelHandlers();
+            }
+        }
+        private void AddLabelHandlers()
+        {
+            for (int i = 0; i < Field.Children.Count; i++)
+            {
+                Field.Children[i].AddHandler(Label.MouseLeftButtonDownEvent, new MouseButtonEventHandler(Letter_Click));
             }
         }
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
