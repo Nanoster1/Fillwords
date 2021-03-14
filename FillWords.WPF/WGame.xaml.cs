@@ -13,19 +13,22 @@ using FillWords.Logic;
 
 namespace FillWords.WPF
 {
-    /// <summary>
-    /// Логика взаимодействия для WGame.xaml
-    /// </summary>
     public partial class WGame : Window
     {
+        SolidColorBrush[] Colors { get; set; } = { Brushes.Red, Brushes.Blue, Brushes.White, Brushes.Black, Brushes.GreenYellow, Brushes.Chocolate, Brushes.Green, Brushes.Gold, Brushes.Pink, Brushes.YellowGreen };
         NewGame Game { get; set; }
         Word ActualWord { get; set; } = new Word();
         public WGame(NewGame game)
         {
             InitializeComponent();
             Game = game;
-            RenderField.CreateField(Game, Field);
+            RenderField.CreateField(Game, Field, Width, Height);
             AddLabelHandlers();
+            RenderField.WriteWords(tbWords);
+        }
+        private void Field_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            RenderField.ReRenderField(Field, ActualWidth, ActualHeight);
         }
         private void Letter_Click(object sender, MouseButtonEventArgs e)
         {
@@ -46,7 +49,7 @@ namespace FillWords.WPF
             {
                 Field.Children.Clear();
                 tbWords.Text = "";
-                RenderField.CreateField(Game, Field);
+                RenderField.CreateField(Game, Field, ActualWidth, ActualHeight);
                 AddLabelHandlers();
             }
         }

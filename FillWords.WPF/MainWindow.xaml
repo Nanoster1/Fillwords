@@ -9,10 +9,10 @@
     <Border Background="Black">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Image Source="Resources\MainWindow\Logo.png" Grid.Row="0" Width="200"></Image>
+            <Image Source="Resources\MainWindow\Logo.png" Grid.Row="0"></Image>
             <StackPanel VerticalAlignment="Center" Grid.Row="1">
                 <Button FontSize="30" HorizontalAlignment="Center" Click="BtnNewGame_Click"  x:Name="btnNewGame">Новая игра</Button>
                 <StackPanel HorizontalAlignment="Center" x:Name="spNewGame" Orientation="Horizontal" Visibility="Collapsed">

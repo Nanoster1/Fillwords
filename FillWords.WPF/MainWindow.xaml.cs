@@ -109,5 +109,10 @@ namespace FillWords.WPF
         {
             this.Close();
         }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+           
+        }
     }
 }

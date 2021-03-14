@@ -28,5 +28,11 @@ namespace FillWords.WPF
             mainWindow.Show();
             this.Close();
         }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            tbRecords.FontSize = bRecords.ActualWidth * bRecords.ActualHeight / 10000;
+            btnBack.FontSize = btnBack.ActualHeight * btnBack.ActualWidth / 2000;
+        }
     }
 }

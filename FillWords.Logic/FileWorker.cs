@@ -47,10 +47,10 @@ namespace FillWords.Logic
         {
             string file = File.ReadAllText(path);
             string[] save = file.Split(' ');
-            MenuOptionsData.TableColor = (ConsoleColor)(int.Parse(save[2]));
-            MenuOptionsData.CursorColor = (ConsoleColor)(int.Parse(save[3]));
-            MenuOptionsData.WordColor= (ConsoleColor)(int.Parse(save[4]));
-            MenuOptionsData.TrueWordColor = (ConsoleColor)(int.Parse(save[5]));
+            MenuOptionsData.TableColor = int.Parse(save[2]);
+            MenuOptionsData.CursorColor = int.Parse(save[3]);
+            MenuOptionsData.WordColor= int.Parse(save[4]);
+            MenuOptionsData.TrueWordColor = int.Parse(save[5]);
             MenuOptionsData.TableHeight = int.Parse(save[6]);
             MenuOptionsData.TableWidth =int.Parse(save[7]);
             GamerInfo gamer = new GamerInfo(save[0], int.Parse(save[1]), new char[0,0]);
