@@ -35,7 +35,6 @@ namespace FillWords.WPF
         }
         private void Click_SaveOpt(object sender, RoutedEventArgs e)
         {
-            //Доделать цвет
             if (tbxFieldWidth.Text == "" || tbxFieldHeight.Text == "")
             {
                 MainWindow mainWindow = new MainWindow();
@@ -103,7 +102,7 @@ namespace FillWords.WPF
 
         private void Win_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            for (int i = 0; i < spCursorColor.Children.Count; i++) 
+            for (int i = 0; i < spCursorColor.Children.Count; i++)
             {
                 (spCursorColor.Children[i] as Label).Width = ActualWidth / 10;
                 (spTableColor.Children[i] as Label).Width = ActualWidth / 10;
@@ -114,12 +113,32 @@ namespace FillWords.WPF
                 (spTrueWordColor.Children[i] as Label).FontSize = ActualWidth / 60;
                 (spWordColor.Children[i] as Label).FontSize = ActualWidth / 60;
             }
+            ChangeSizeAllButtons();
+        }
+        void ChangeSizeButton(Button button)
+        {
+            if (button.ActualHeight < button.ActualWidth)
+            {
+                button.FontSize = button.ActualHeight;
+                if (button.ActualWidth < button.Content.ToString().Length * button.FontSize)
+                    button.FontSize = button.Content.ToString().Length * button.ActualHeight - button.ActualWidth;
+            }
+            else
+                button.FontSize = ActualWidth / button.Content.ToString().Length;
+        }
+        void ChangeSizeAllButtons()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                ChangeSizeButton(Grid.Children[i] as Button);
+            }
         }
 
         private void btnCursorColor_Click(object sender, RoutedEventArgs e)
         {
             SetVisibility();
-            btnCursorColor.Visibility = Visibility.Collapsed;
+            (sender as Button).Visibility = Visibility.Collapsed;
+            int index = Grid.GetRow(sender as Button);
             spCursorColor.Visibility = Visibility.Visible;
         }
         private void btnCellColor_Click(object sender, RoutedEventArgs e)

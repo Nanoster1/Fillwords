@@ -21,9 +21,10 @@ namespace FillWords.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public readonly FileWorker fileWorker = new FileWorker();
+        public readonly FileWorker fileWorker;
         public MainWindow()
         {
+            fileWorker = new FileWorker();
             InitializeComponent();
         }
         private void BtnNewGame_Click(object sender, RoutedEventArgs e)
@@ -83,19 +84,9 @@ namespace FillWords.WPF
             }
             MessageBox.Show(text.ToString(), "Сохранения");
         }
-        private string GetRecords()
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i < fileWorker.Records.Length; i++)
-            {
-                stringBuilder.Append(fileWorker.Records[i] + "\n\n");
-            }
-            return stringBuilder.ToString();
-        }
         private void BtnRecords_Click(object sender, RoutedEventArgs e)
         {
             Records recordsWindow = new Records();
-            recordsWindow.tbRecords.Text = GetRecords();
             recordsWindow.Show();
             this.Close();
         }
@@ -112,7 +103,26 @@ namespace FillWords.WPF
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-           
+           for (int i = 0; i < spMenu.Children.Count; i++)
+           {
+                if (spMenu.Children[i] is Button)
+                {
+                    Button button = spMenu.Children[i] as Button;
+                    button.Height = ActualHeight / 12;
+                    button.Width = ActualWidth / 3;
+                    button.FontSize = button.Width * button.Height / 800;
+                }
+                else
+                {
+                    StackPanel panel = spMenu.Children[i] as StackPanel;
+                    for (int k = 0; k < panel.Children.Count; k++)
+                    {
+                        (panel.Children[k] as Control).Height = ActualHeight / 12;
+                        (panel.Children[k] as Control).Width = ActualWidth / 5;
+                        (panel.Children[k] as Control).FontSize = (panel.Children[k] as Control).Width * (panel.Children[k] as Control).Height / 800;
+                    }
+                }
+           }
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using FillWords.Logic;
 
 namespace FillWords.WPF
 {
@@ -20,6 +21,7 @@ namespace FillWords.WPF
         public Records()
         {
             InitializeComponent();
+            tbRecords.Text = GetRecords();
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -28,7 +30,16 @@ namespace FillWords.WPF
             mainWindow.Show();
             this.Close();
         }
-
+        private string GetRecords()
+        {
+            FileWorker fileWorker = new FileWorker();
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 0; i < fileWorker.Records.Length; i++)
+            {
+                stringBuilder.Append(fileWorker.Records[i] + "\n\n");
+            }
+            return stringBuilder.ToString();
+        }
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             tbRecords.FontSize = bRecords.ActualWidth * bRecords.ActualHeight / 10000;

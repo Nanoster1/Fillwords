@@ -11,6 +11,7 @@ namespace FillWords.WPF
 {
     public static class RenderField
     {
+        public static readonly SolidColorBrush[] Colors = { Brushes.Red, Brushes.Blue, Brushes.White, Brushes.Black, Brushes.GreenYellow, Brushes.Chocolate, Brushes.Green, Brushes.Gold, Brushes.Pink, Brushes.YellowGreen };
         public static void CreateField(NewGame game, Canvas Field, double winWidth, double winHeight)
         {
             Field.Children.Clear();
@@ -21,19 +22,25 @@ namespace FillWords.WPF
             {
                 for (int i = 0; i < MenuOptionsData.TableWidth; i++)
                 {
-                    Label label = new Label();
-                    label.Content = table[j, i];
-                    label.HorizontalContentAlignment = HorizontalAlignment.Center;
-                    label.VerticalContentAlignment = VerticalAlignment.Center;
-                    label.Background = Brushes.Black;
-                    label.Foreground = Brushes.White;
-                    label.Width = winWidth / MenuOptionsData.TableWidth;
-                    label.Height = (winHeight - 200) / MenuOptionsData.TableHeight;
-                    Canvas.SetLeft(label, i * winWidth / MenuOptionsData.TableWidth);
-                    Canvas.SetTop(label, j * (winHeight - 200) / MenuOptionsData.TableHeight);
-                    Field.Children.Add(label);
+                    Field.Children.Add(CreateCell(winWidth, winHeight, table, j, i));
                 }
             }
+        }
+        static Label CreateCell(double winWidth, double winHeight, char[,] table, int j, int i)
+        {
+            Label label = new Label
+            {
+                Content = table[j, i],
+                HorizontalContentAlignment = HorizontalAlignment.Center,
+                VerticalContentAlignment = VerticalAlignment.Center,
+                Background = Colors[FillWords.Logic.MenuOptionsData.TableColor],
+                Foreground = Colors[FillWords.Logic.MenuOptionsData.WordColor],
+                Width = winWidth / MenuOptionsData.TableWidth,
+                Height = (winHeight - 200) / MenuOptionsData.TableHeight
+            };
+            Canvas.SetLeft(label, i * winWidth / MenuOptionsData.TableWidth);
+            Canvas.SetTop(label, j * (winHeight - 200) / MenuOptionsData.TableHeight);
+            return label;
         }
         public static void ReRenderField(Canvas Field, double winWidth, double winHeight)
         {
@@ -49,7 +56,7 @@ namespace FillWords.WPF
         }
         public static void WriteWords(TextBlock tbWords)
         {
-            for (int i = 0; i < GameTable.Words.Count; i++)  //В отдельный метод
+            for (int i = 0; i < GameTable.Words.Count; i++)
             {
                 tbWords.Text += GameTable.Words[i].Name + "\n";
             }
