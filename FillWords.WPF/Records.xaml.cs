@@ -23,7 +23,6 @@ namespace FillWords.WPF
             InitializeComponent();
             tbRecords.Text = GetRecords();
         }
-
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
@@ -39,11 +38,6 @@ namespace FillWords.WPF
                 stringBuilder.Append(fileWorker.Records[i] + "\n\n");
             }
             return stringBuilder.ToString();
-        }
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            tbRecords.FontSize = bRecords.ActualWidth * bRecords.ActualHeight / 10000;
-            btnBack.FontSize = btnBack.ActualHeight * btnBack.ActualWidth / 2000;
         }
     }
 }

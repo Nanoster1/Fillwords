@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FillWords.WPF"
         mc:Ignorable="d"
-        Title="Records" Height="600" Width="1000" SizeChanged="Window_SizeChanged">
+        Title="Records" Height="600" Width="1000">
     <Grid Background="Black">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -16,17 +16,31 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border  Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="Green" BorderThickness="3">
-            <Image Source="Resources/Records/Top.png"></Image>
-        </Border>
-        <Border   Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" BorderBrush="Green" BorderThickness="3">
-            <Image Source="Resources/Records/Fire.png"></Image>
-        </Border>
-        <Border x:Name="bRecords" Grid.Column="2" Grid.Row="1" BorderBrush="Green" BorderThickness="3">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <TextBlock x:Name="tbRecords" Foreground="White"></TextBlock>
+        <Image Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" 
+               Source="Resources/Records/Top.png">
+        </Image>
+        <Image Grid.Column="0" Grid.Row="0"
+               Source="Resources/Records/Fire.png">
+        </Image>
+        <Border x:Name="bRecords" 
+                Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" 
+                BorderBrush="Green" BorderThickness="3">
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Auto">
+                <TextBlock x:Name="tbRecords" 
+                           Foreground="White" 
+                           FontSize="25">
+                </TextBlock>
             </ScrollViewer>
         </Border>
-        <Button x:Name="btnBack" Click="BtnBack_Click" IsCancel="True" Grid.Column="1" Grid.Row="1" FontSize="50">В меню</Button>
+        <Viewbox Grid.Column="0" Grid.Row="1" 
+                 VerticalAlignment="Bottom" 
+                 HorizontalAlignment="Left"
+                 MaxWidth="200">
+            <Button x:Name="btnBack" 
+                    Click="BtnBack_Click" 
+                    IsCancel="True">В меню
+            </Button>
+        </Viewbox>
     </Grid>
 </Window>

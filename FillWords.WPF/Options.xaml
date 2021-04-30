@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:FillWords.WPF"
         mc:Ignorable="d"
         Title="Options" Height="600" Width="800"  x:Name="Window">
-    <Viewbox MinWidth="{Binding ElementName=Window, Path=ActualWidth}">
     <Grid x:Name="Grid" Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -16,22 +15,105 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button x:Name="btnCellColor" Grid.Row="0"     FontSize="30" Click="btnCellColor_Click">Цвет ячеек</Button>
-        <Button x:Name="btnCursorColor"  Grid.Row="1"   FontSize="30" Click="btnCursorColor_Click">Цвет курсора</Button>
-        <Button x:Name="btnWordColor"    Grid.Row="2"  FontSize="30" Click="btnWordColor_Click">Цвет слов</Button>
-        <Button x:Name="btnTrueWordColor" Grid.Row="3"  FontSize="30" Click="btnTrueWordColor_Click">Цвет выделенных слов</Button>
-        <Button x:Name="btnSizeField"  Grid.Row="4"    FontSize="30" Click="btnSizeField_Click">Размер поля</Button>
-        <StackPanel x:Name="spTableColor" Grid.Row="0"    Visibility="Hidden" Orientation="Horizontal"></StackPanel>
-        <StackPanel x:Name="spCursorColor"  Grid.Row="1"  Visibility="Hidden" Orientation="Horizontal"></StackPanel>
-        <StackPanel x:Name="spWordColor"   Grid.Row="2"   Visibility="Hidden" Orientation="Horizontal"></StackPanel>
-        <StackPanel x:Name="spTrueWordColor"  Grid.Row="3" Visibility="Hidden" Orientation="Horizontal"></StackPanel>
-        <StackPanel x:Name="spSizeField"  Grid.Row="4"    Visibility="Hidden" Orientation="Vertical">
-            <Label HorizontalContentAlignment="Center" Foreground="White">Высота поля</Label>
-            <TextBox HorizontalContentAlignment="Center" x:Name="tbxFieldHeight"></TextBox>
-            <Label HorizontalContentAlignment="Center" Foreground="White">Ширина поля</Label>
-            <TextBox HorizontalContentAlignment="Center" x:Name="tbxFieldWidth"></TextBox>
-        </StackPanel>
-        <Button FontSize="30"  Grid.Row="5" Click="Click_SaveOpt" IsCancel="True">Сохранить и выйти в меню</Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Viewbox  Grid.Row="0" Grid.RowSpan="2" Grid.Column="1">
+            <Border BorderBrush="White" BorderThickness="1">
+                <Label 
+                    x:Name="StandartCell"
+                    Background="Black"
+                    Foreground="White">A
+                </Label>
+            </Border>
+        </Viewbox>
+        <Viewbox  Grid.Row="2" Grid.RowSpan="2" Grid.Column="1">
+            <Border BorderBrush="White" BorderThickness="1">
+                <Label
+                    x:Name="EnableCell"
+                    Background="Chocolate"
+                    Foreground="GreenYellow">A
+                </Label>
+            </Border>
+        </Viewbox>
+        <Viewbox Grid.Row="4" Grid.Column="1">
+            <TextBox x:Name="tbxFieldWidth" 
+                     Background="Black" Foreground="White" BorderBrush="Black"
+                     HorizontalContentAlignment="Center">Ширина поля
+            </TextBox>
+        </Viewbox>
+        <Viewbox Grid.Row="4" Grid.Column="0">
+            <TextBox x:Name="tbxFieldHeight" 
+                     Background="Black" Foreground="White" BorderBrush="Black"
+                     HorizontalContentAlignment="Center">Высота поля
+            </TextBox>
+        </Viewbox>
+        <Viewbox Grid.Row="3" Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="White">Цвет выбранных букв</Label>
+                <Slider
+                    Value="4"
+                    VerticalAlignment="Center"
+                    MinWidth="70"  
+                    Maximum="9" Minimum="0" 
+                    Orientation="Horizontal" 
+                    IsSnapToTickEnabled="True" 
+                    IsSelectionRangeEnabled="True"
+                    ValueChanged="SliderCursorColor_ValueChanged">
+                </Slider>
+            </StackPanel>
+        </Viewbox>
+        <Viewbox Grid.Row="2" Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="White">Цвет выбранной ячейки</Label>
+                <Slider
+                    Value="5"
+                    VerticalAlignment="Center"
+                    MinWidth="70"  
+                    Maximum="9" Minimum="0" 
+                    Orientation="Horizontal" 
+                    IsSnapToTickEnabled="True" 
+                    IsSelectionRangeEnabled="True"
+                    ValueChanged="SliderTrueWordColor_ValueChanged">
+                </Slider>
+            </StackPanel>
+        </Viewbox>
+        <Viewbox Grid.Row="1" Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="White">Цвет букв</Label>
+                <Slider
+                    Value="2"
+                    VerticalAlignment="Center"
+                    MinWidth="70"  
+                    Maximum="9" Minimum="0" 
+                    Orientation="Horizontal" 
+                    IsSnapToTickEnabled="True" 
+                    IsSelectionRangeEnabled="True"
+                    ValueChanged="SliderWordColor_ValueChanged">
+                </Slider>
+            </StackPanel>
+        </Viewbox>
+        <Viewbox Grid.Row="0" Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="White">Цвет ячейки</Label>
+                <Slider
+                    Value="3"
+                    VerticalAlignment="Center"
+                    MinWidth="70"  
+                    Maximum="9" Minimum="0" 
+                    Orientation="Horizontal" 
+                    IsSnapToTickEnabled="True" 
+                    IsSelectionRangeEnabled="True"
+                    ValueChanged="SliderTableColor_ValueChanged">
+                </Slider>
+           </StackPanel>
+        </Viewbox>
+        <Viewbox Grid.ColumnSpan="2"  Grid.Row="5" >
+            <Button FontSize="30" 
+                Click="Click_SaveOpt" 
+                IsCancel="True">Сохранить и выйти в меню
+            </Button>
+        </Viewbox>
     </Grid>
-    </Viewbox>
 </Window>

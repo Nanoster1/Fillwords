@@ -25,10 +25,7 @@ namespace FillWords.WPF
             AddLabelHandlers();
             RenderField.WriteWords(tbWords);
         }
-        private void Field_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            RenderField.ReRenderField(Field, ActualWidth, ActualHeight);
-        }
+
         private void Letter_Click(object sender, MouseButtonEventArgs e)
         {
             ActualWord.CoordsX.Add(Field.Children.IndexOf(sender as Label) % MenuOptionsData.TableWidth);

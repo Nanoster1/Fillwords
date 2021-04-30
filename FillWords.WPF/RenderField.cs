@@ -11,7 +11,20 @@ namespace FillWords.WPF
 {
     public static class RenderField
     {
-        public static readonly SolidColorBrush[] Colors = { Brushes.Red, Brushes.Blue, Brushes.White, Brushes.Black, Brushes.GreenYellow, Brushes.Chocolate, Brushes.Green, Brushes.Gold, Brushes.Pink, Brushes.YellowGreen };
+        public static readonly SolidColorBrush[] Colors = 
+        { 
+            Brushes.Red, 
+            Brushes.Blue, 
+            Brushes.White, 
+            Brushes.Black, 
+            Brushes.GreenYellow, 
+            Brushes.Chocolate, 
+            Brushes.Green, 
+            Brushes.Gold, 
+            Brushes.Pink, 
+            Brushes.YellowGreen 
+        };
+
         public static void CreateField(NewGame game, Canvas Field, double winWidth, double winHeight)
         {
             Field.Children.Clear();
