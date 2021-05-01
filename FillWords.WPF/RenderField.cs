@@ -11,6 +11,7 @@ namespace FillWords.WPF
 {
     public static class RenderField
     {
+        static Canvas Field { get; set; }
         public static readonly SolidColorBrush[] Colors = 
         { 
             Brushes.Red, 
@@ -24,48 +25,65 @@ namespace FillWords.WPF
             Brushes.Pink, 
             Brushes.YellowGreen 
         };
+        public static void SetField(Canvas canvas)
+        {
+            if (Field == null)
+                Field = canvas;
+            else
+                throw new Exception("Поле уже задано");
+        }
 
-        public static void CreateField(NewGame game, Canvas Field, double winWidth, double winHeight)
+        public static void CreateField(NewGame game, Canvas Field)
         {
             Field.Children.Clear();
-            Field.Width = winWidth;
-            Field.Height = (winHeight - 200);
             char[,] table = game.Gamer.Table;
             for (int j = 0; j < MenuOptionsData.TableHeight; j++)
             {
                 for (int i = 0; i < MenuOptionsData.TableWidth; i++)
                 {
-                    Field.Children.Add(CreateCell(winWidth, winHeight, table, j, i));
+                    Field.Children.Add(CreateCell( table, j, i));
                 }
             }
+            
         }
-        static Label CreateCell(double winWidth, double winHeight, char[,] table, int j, int i)
+        private static Label CreateCell(char[,] table, int j, int i)
         {
-            Label label = new Label
+            Label cell = new Label
             {
                 Content = table[j, i],
                 HorizontalContentAlignment = HorizontalAlignment.Center,
                 VerticalContentAlignment = VerticalAlignment.Center,
                 Background = Colors[FillWords.Logic.MenuOptionsData.TableColor],
                 Foreground = Colors[FillWords.Logic.MenuOptionsData.WordColor],
-                Width = winWidth / MenuOptionsData.TableWidth,
-                Height = (winHeight - 200) / MenuOptionsData.TableHeight
+                Width = Field.Width / MenuOptionsData.TableWidth - 10,
+                Height = Field.Height / MenuOptionsData.TableHeight - 10,
+                BorderBrush = Brushes.White
             };
-            Canvas.SetLeft(label, i * winWidth / MenuOptionsData.TableWidth);
-            Canvas.SetTop(label, j * (winHeight - 200) / MenuOptionsData.TableHeight);
-            return label;
+            if (!double.IsNaN(cell.Width) || !double.IsNaN(cell.Height)) 
+                SetFontSize(cell);
+            Canvas.SetLeft(cell, i * Field.Width / MenuOptionsData.TableWidth);
+            Canvas.SetTop(cell, j * Field.Height / MenuOptionsData.TableHeight);
+            return cell;
         }
-        public static void ReRenderField(Canvas Field, double winWidth, double winHeight)
+        public static void ReRenderField()
         {
             for (int i = 0; i < Field.Children.Count; i++)
             {
-                (Field.Children[i] as Label).Width = winWidth / MenuOptionsData.TableWidth;
-                (Field.Children[i] as Label).Height = (winHeight - 200) / MenuOptionsData.TableHeight;
-                Canvas.SetLeft((Field.Children[i] as Label), i % MenuOptionsData.TableWidth * winWidth / MenuOptionsData.TableWidth);
-                Canvas.SetTop((Field.Children[i] as Label), i / MenuOptionsData.TableWidth * (winHeight - 200) / MenuOptionsData.TableHeight);
+                Label cell = Field.Children[i] as Label;
+                cell.Width = Field.Width / MenuOptionsData.TableWidth - 10;
+                cell.Height = Field.Height / MenuOptionsData.TableHeight - 10;
+                cell.VerticalContentAlignment = VerticalAlignment.Stretch;
+                SetFontSize(cell);
+                Canvas.SetLeft(cell, i % MenuOptionsData.TableWidth * Field.Width / MenuOptionsData.TableWidth);
+                Canvas.SetTop(cell, i / MenuOptionsData.TableWidth * Field.Height / MenuOptionsData.TableHeight);
             }
-            Field.Width = winWidth;
-            Field.Height = (winHeight - 200);
+        }
+        private static void SetFontSize(Label cell)
+        {
+            if (cell.Width < cell.Height)
+                cell.FontSize = cell.Width * 0.60;
+            else
+                cell.FontSize = cell.Height * 0.60;
         }
         public static void WriteWords(TextBlock tbWords)
         {

@@ -18,9 +18,6 @@ namespace FillWords.WPF
     /// </summary>
     public partial class Options : Window
     {
-        SolidColorBrush[] Colors { get; set; } = { Brushes.Red, Brushes.Blue, Brushes.White, Brushes.Black, Brushes.GreenYellow, Brushes.Chocolate,
-                                                   Brushes.Green, Brushes.Gold, Brushes.Pink, Brushes.YellowGreen};
-
         public Options()
         {
             InitializeComponent();
@@ -51,22 +48,22 @@ namespace FillWords.WPF
         private void SliderCursorColor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             MenuOptionsData.CursorColor = (int)e.NewValue;
-            EnableCell.Background = Colors[MenuOptionsData.CursorColor];
+            EnableCell.Background = RenderField.Colors[MenuOptionsData.CursorColor];
         }
         private void SliderTrueWordColor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             MenuOptionsData.TrueWordColor = (int)e.NewValue;
-            EnableCell.Foreground = Colors[MenuOptionsData.TrueWordColor];
+            EnableCell.Foreground = RenderField.Colors[MenuOptionsData.TrueWordColor];
         }
         private void SliderTableColor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             MenuOptionsData.TableColor = (int)e.NewValue;
-            StandartCell.Background = Colors[MenuOptionsData.TableColor];
+            StandartCell.Background = RenderField.Colors[MenuOptionsData.TableColor];
         }
         private void SliderWordColor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             MenuOptionsData.WordColor = (int)e.NewValue;
-            StandartCell.Foreground = Colors[MenuOptionsData.WordColor];
+            StandartCell.Foreground = RenderField.Colors[MenuOptionsData.WordColor];
         }
     }
 }
