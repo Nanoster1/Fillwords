@@ -13,9 +13,6 @@ using FillWords.Logic;
 
 namespace FillWords.WPF
 {
-    /// <summary>
-    /// Логика взаимодействия для WGame.xaml
-    /// </summary>
     public partial class WGame : Window
     {
         NewGame Game { get; set; }
@@ -23,21 +20,27 @@ namespace FillWords.WPF
         public WGame(NewGame game)
         {
             InitializeComponent();
+            RenderField.SetField(Field);
             Game = game;
             RenderField.CreateField(Game, Field);
             AddLabelHandlers();
+            RenderField.WriteWords(tbWords);
+            SetLNameContent();
         }
+
         private void Letter_Click(object sender, MouseButtonEventArgs e)
         {
             ActualWord.CoordsX.Add(Field.Children.IndexOf(sender as Label) % MenuOptionsData.TableWidth);
             ActualWord.CoordsY.Add(Field.Children.IndexOf(sender as Label) / MenuOptionsData.TableWidth);
-            (sender as Label).Background = Brushes.Green;
+            (sender as Label).Background = RenderField.Colors[FillWords.Logic.MenuOptionsData.CursorColor];
             if (Game.CheckWord(ActualWord))
             {
                 for (int i = 0; i < ActualWord.CoordsX.Count; i++)
                 {
                     int index = ActualWord.CoordsY[i] * MenuOptionsData.TableWidth + ActualWord.CoordsX[i];
-                    (Field.Children[index] as Label).Background = Brushes.Blue;
+                    Label cell = Field.Children[index] as Label;
+                    cell.Background = RenderField.Colors[FillWords.Logic.MenuOptionsData.TrueWordColor];
+                    cell.RemoveHandler(Label.MouseLeftButtonDownEvent, new MouseButtonEventHandler(Letter_Click));
                 }
                 ActualWord.CoordsX.Clear();
                 ActualWord.CoordsY.Clear();
@@ -48,6 +51,7 @@ namespace FillWords.WPF
                 tbWords.Text = "";
                 RenderField.CreateField(Game, Field);
                 AddLabelHandlers();
+                SetLNameContent();
             }
         }
         private void AddLabelHandlers()
@@ -62,17 +66,35 @@ namespace FillWords.WPF
             for (int i = 0; i < ActualWord.CoordsX.Count; i++)
             {
                 int index = ActualWord.CoordsY[i] * MenuOptionsData.TableWidth + ActualWord.CoordsX[i];
-                (Field.Children[index] as Label).Background = Brushes.Black;
+                (Field.Children[index] as Label).Background = RenderField.Colors[FillWords.Logic.MenuOptionsData.TableColor];
             }
             ActualWord.CoordsX.Clear();
             ActualWord.CoordsY.Clear();
+        }     
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Field.Width = e.NewSize.Width / 3 * 2;
+            Field.Height = Row.ActualHeight;
+            RenderField.ReRenderField();
         }
-        private void BtnSaveAndExit_Click(object sender, RoutedEventArgs e)
+
+        private void SetLNameContent()
+        {
+            LName.Content = $"{Game.Gamer.Name}\n{Game.Gamer.Scores}";
+        }
+        private void CloseGame()
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.fileWorker.CreateSave(Game.Gamer);
             mainWindow.fileWorker.WriteRecord(Game.Gamer);
             mainWindow.Show();
+        }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            CloseGame();
+        }
+        private void BtnSaveAndExit_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
     }

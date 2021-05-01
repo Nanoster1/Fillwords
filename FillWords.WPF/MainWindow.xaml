@@ -5,32 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FillWords.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000">
-    <Border Background="Black">
+        Title="MainWindow" Height="600" Width="1000" Background="Black">
+    <Viewbox>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Image Source="Resources\MainWindow\Logo.png" Grid.Row="0" Width="200"></Image>
-            <StackPanel VerticalAlignment="Center" Grid.Row="1">
-                <Button FontSize="30" HorizontalAlignment="Center" Click="BtnNewGame_Click"  x:Name="btnNewGame">Новая игра</Button>
+            <Image MaxWidth="200" Source="Resources\MainWindow\Logo.png" Grid.Row="0"></Image>
+            <StackPanel x:Name="spMenu" VerticalAlignment="Center" Grid.Row="1">
                 <StackPanel HorizontalAlignment="Center" x:Name="spNewGame" Orientation="Horizontal" Visibility="Collapsed">
-                    <Label FontSize="20" Foreground="White">Ваше имя:</Label>
+                    <Label FontSize="20" Foreground="White" HorizontalAlignment="Right">Ваше имя:</Label>
                     <TextBox FontSize="20" Width="250" x:Name="tbxName1"></TextBox>
-                    <Button FontSize="20" Click="BtnStartNewGame_Click">Продолжить</Button>
+                    <Button FontSize="20" Click="BtnStartNewGame_Click">Начать</Button>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center" x:Name="spContinue" Orientation="Horizontal" Visibility="Collapsed">
-                    <Label FontSize="20" Foreground="White">Имя сохранения:</Label>
+                    <Label FontSize="20" Foreground="White" HorizontalAlignment="Right">Имя сохранения:</Label>
                     <TextBox FontSize="20" Width="250" x:Name="tbxName2"></TextBox>
                     <Button FontSize="20" Click="BtnStartGame_Click">Продолжить</Button>
                     <Button FontSize="20" Click="BtnCheckSaves_Click">Посмотреть список сохранений</Button>
                 </StackPanel>
+                <Button FontSize="30" HorizontalAlignment="Center" Click="BtnNewGame_Click"  x:Name="btnNewGame">Новая игра</Button>
                 <Button FontSize="30" HorizontalAlignment="Center" Click="BtnCountinue_Click" x:Name="btnContinue">Продолжить</Button>
                 <Button FontSize="30" HorizontalAlignment="Center" Click="BtnRecords_Click">Рекорды</Button>
                 <Button FontSize="30" HorizontalAlignment="Center" Click="BtnOptions_Click">Опции</Button>
                 <Button FontSize="30" HorizontalAlignment="Center" Click="BtnExit_Click" IsCancel="True">Выход</Button>
             </StackPanel>
         </Grid>
-    </Border>
+    </Viewbox>
 </Window>

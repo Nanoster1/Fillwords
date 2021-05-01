@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <None Remove="Resources\MainWindow\Logo.png" />
-    <None Remove="Resources\Options\Options.png" />
     <None Remove="Resources\Records\Fire.png" />
     <None Remove="Resources\Records\Top.png" />
   </ItemGroup>
@@ -21,9 +20,6 @@
 
   <ItemGroup>
     <Resource Include="Resources\MainWindow\Logo.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Options\Options.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Records\Fire.png">

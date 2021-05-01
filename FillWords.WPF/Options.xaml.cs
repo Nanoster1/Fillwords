@@ -22,16 +22,9 @@ namespace FillWords.WPF
         {
             InitializeComponent();
         }
-
-        private void btnSizeField_Click(object sender, RoutedEventArgs e)
-        {
-            btnSizeField.Visibility = Visibility.Hidden;
-            spSizeField.Visibility = Visibility.Visible;
-        }
         private void Click_SaveOpt(object sender, RoutedEventArgs e)
         {
-            //Доделать цвет
-            if (tbxFieldWidth.Text == "" || tbxFieldHeight.Text == "")
+            if (!int.TryParse(tbxFieldWidth.Text, out _) || !int.TryParse(tbxFieldHeight.Text, out _))
             {
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
@@ -50,6 +43,27 @@ namespace FillWords.WPF
                 mainWindow.Show();
                 this.Close();
             }
+        }
+
+        private void SliderCursorColor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MenuOptionsData.CursorColor = (int)e.NewValue;
+            EnableCell.Background = RenderField.Colors[MenuOptionsData.CursorColor];
+        }
+        private void SliderTrueWordColor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MenuOptionsData.TrueWordColor = (int)e.NewValue;
+            EnableCell.Foreground = RenderField.Colors[MenuOptionsData.TrueWordColor];
+        }
+        private void SliderTableColor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MenuOptionsData.TableColor = (int)e.NewValue;
+            StandartCell.Background = RenderField.Colors[MenuOptionsData.TableColor];
+        }
+        private void SliderWordColor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MenuOptionsData.WordColor = (int)e.NewValue;
+            StandartCell.Foreground = RenderField.Colors[MenuOptionsData.WordColor];
         }
     }
 }

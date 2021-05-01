@@ -5,21 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FillWords.WPF"
         mc:Ignorable="d"
-        Title="WGame" Height="450" Width="800">
+        Title="WGame" Height="450" Width="800" SizeChanged="Window_SizeChanged" 
+        x:Name="Window" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*" x:Name="Row"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*" ></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <WrapPanel Grid.ColumnSpan="3"  ItemWidth="80" Grid.Row="0" x:Name="Field" Orientation="Horizontal" >
-        </WrapPanel>
-        <Button FontSize="20" Grid.Row="1" IsCancel="True" Click="BtnCancel_Click">Cancel</Button>
+        <Canvas x:Name="Field"
+                Grid.ColumnSpan="2" Grid.Row="0">
+        </Canvas>
+        <Viewbox  Grid.Row="1">
+        <StackPanel>
+            <Button FontSize="20"
+                    Click="BtnCancel_Click"
+                    IsCancel="True">Отменить
+            </Button>
+            <Button FontSize="20"
+                    Click="BtnSaveAndExit_Click">Сохранить и выйти
+            </Button>
+        </StackPanel>
+        </Viewbox>
+        <Viewbox Grid.Column="2">
+            <Label x:Name="LName"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center">
+            </Label>
+        </Viewbox>
         <TextBlock Grid.Column="1" x:Name="tbWords" Grid.Row="1"></TextBlock>
-        <Button Grid.Column="2" Grid.Row="1" FontSize="20" Click="BtnSaveAndExit_Click">Сохранить и выйти</Button>
     </Grid>
 </Window>

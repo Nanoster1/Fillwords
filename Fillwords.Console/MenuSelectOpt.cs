@@ -119,13 +119,13 @@
                 Console.ForegroundColor = ConsoleColor.Green;
                 Drawer.WriteMenu(welcome, 15);
                 Console.WriteLine();
-                MenuOptionsData.EnterTableHeight(int.Parse(Console.ReadLine())); //Мб проверка на дурака
+                MenuOptionsData.TableHeight = int.Parse(Console.ReadLine()); //Мб проверка на дурака
                 Console.Clear();
                 string[] welcome2 ={"█▀▀ █▄ █ ▀█▀ █▀▀ █▀█   ▀█▀ █ █ █▀▀   █▀▀ █ █▀▀ █   █▀▄   █ █ █ █ █▀▄ ▀█▀ █ █",
                                     "██▄ █ ▀█  █  ██▄ █▀▄    █  █▀█ ██▄   █▀  █ ██▄ █▄▄ █▄▀   ▀▄▀▄▀ █ █▄▀  █  █▀█"};
                 Console.ForegroundColor = ConsoleColor.Green;
                 Drawer.WriteMenu(welcome2, 15);
-                MenuOptionsData.EnterTableWidth(int.Parse(Console.ReadLine())); //Мб проверка на дурака
+                MenuOptionsData.TableWidth = int.Parse(Console.ReadLine()); //Мб проверка на дурака
                 Console.Clear();
                 Head();
             }
@@ -140,34 +140,34 @@
                 switch (i)
                 {
                     case 1:
-                        MenuOptionsData.EnterCursorColor((ConsoleColor)(1));
+                        MenuOptionsData.CursorColor = 1;
                         break;
                     case 2:
-                        MenuOptionsData.EnterCursorColor((ConsoleColor)(2));
+                        MenuOptionsData.CursorColor = 2;
                         break;
                     case 3:
-                        MenuOptionsData.EnterCursorColor((ConsoleColor)(3));
-                        break;
-                    case 4:
-                        MenuOptionsData.EnterCursorColor((ConsoleColor)(4));
-                        break;
-                    case 5:
-                        MenuOptionsData.EnterCursorColor((ConsoleColor)(5));
-                        break;
-                    case 6:
-                        MenuOptionsData.EnterCursorColor((ConsoleColor)(6));
-                        break;
-                    case 7:
-                        MenuOptionsData.EnterCursorColor((ConsoleColor)(7));
-                        break;
-                    case 8:
-                        MenuOptionsData.EnterCursorColor((ConsoleColor)(8));
-                        break;
-                    case 9:
-                        MenuOptionsData.EnterCursorColor((ConsoleColor)(9));
-                        break;
-                    case 10:
-                        MenuOptionsData.EnterCursorColor((ConsoleColor)(10));
+                        MenuOptionsData.CursorColor = 3;
+                        break;                      
+                    case 4:                         
+                        MenuOptionsData.CursorColor = 4;
+                        break;                       
+                    case 5:                          
+                        MenuOptionsData.CursorColor = 5;
+                        break;                      
+                    case 6:                         
+                        MenuOptionsData.CursorColor = 6;
+                        break;                      
+                    case 7:                         
+                        MenuOptionsData.CursorColor = 7;
+                        break;                      
+                    case 8:                         
+                        MenuOptionsData.CursorColor = 8;
+                        break;                      
+                    case 9:                         
+                        MenuOptionsData.CursorColor = 9;
+                        break;                     
+                    case 10:                       
+                        MenuOptionsData.CursorColor = 10;
                         break;
                 }
                 Console.Clear();
@@ -184,34 +184,34 @@
                 switch (i)
                 {
                     case 1:
-                        MenuOptionsData.EnterWordColor((ConsoleColor)(1));
+                        MenuOptionsData.WordColor = 1;
                         break;
                     case 2:
-                        MenuOptionsData.EnterWordColor((ConsoleColor)(2));
-                        break;
-                    case 3:
-                        MenuOptionsData.EnterWordColor((ConsoleColor)(3));
-                        break;
-                    case 4:
-                        MenuOptionsData.EnterWordColor((ConsoleColor)(4));
-                        break;
-                    case 5:
-                        MenuOptionsData.EnterWordColor((ConsoleColor)(5));
-                        break;
-                    case 6:
-                        MenuOptionsData.EnterWordColor((ConsoleColor)(6));
-                        break;
-                    case 7:
-                        MenuOptionsData.EnterWordColor((ConsoleColor)(7));
-                        break;
-                    case 8:
-                        MenuOptionsData.EnterWordColor((ConsoleColor)(8));
-                        break;
-                    case 9:
-                        MenuOptionsData.EnterWordColor((ConsoleColor)(9));
-                        break;
-                    case 10:
-                        MenuOptionsData.EnterWordColor((ConsoleColor)(10));
+                        MenuOptionsData.WordColor = 2;
+                        break;                     
+                    case 3:                       
+                        MenuOptionsData.WordColor = 3;
+                        break;                    
+                    case 4:                       
+                        MenuOptionsData.WordColor = 4;
+                        break;                     
+                    case 5:                        
+                        MenuOptionsData.WordColor = 5;
+                        break;                     
+                    case 6:                        
+                        MenuOptionsData.WordColor = 6;
+                        break;                    
+                    case 7:                       
+                        MenuOptionsData.WordColor = 7;
+                        break;                    
+                    case 8:                        
+                        MenuOptionsData.WordColor = 8;
+                        break;                     
+                    case 9:                        
+                        MenuOptionsData.WordColor = 9;
+                        break;                     
+                    case 10:                       
+                        MenuOptionsData.WordColor = 10;
                         break;
                 }
                 Console.Clear();
@@ -228,34 +228,34 @@
                 switch (i)
                 {
                     case 1:
-                        MenuOptionsData.EnterTrueWordColor((ConsoleColor)(1));
+                        MenuOptionsData.TrueWordColor = 1;
                         break;
                     case 2:
-                        MenuOptionsData.EnterTrueWordColor((ConsoleColor)(2));
+                        MenuOptionsData.TrueWordColor = 2;
                         break;
                     case 3:
-                        MenuOptionsData.EnterTrueWordColor((ConsoleColor)(3));
+                        MenuOptionsData.TrueWordColor = 3;
                         break;
                     case 4:
-                        MenuOptionsData.EnterTrueWordColor((ConsoleColor)(4));
+                        MenuOptionsData.TrueWordColor=4;
                         break;
                     case 5:
-                        MenuOptionsData.EnterTrueWordColor((ConsoleColor)(5));
+                        MenuOptionsData.TrueWordColor=5;
                         break;
                     case 6:
-                        MenuOptionsData.EnterTrueWordColor((ConsoleColor)(6));
+                        MenuOptionsData.TrueWordColor=6;
                         break;
                     case 7:
-                        MenuOptionsData.EnterTrueWordColor((ConsoleColor)(7));
+                        MenuOptionsData.TrueWordColor=7;
                         break;
                     case 8:
-                        MenuOptionsData.EnterTrueWordColor((ConsoleColor)(8));
+                        MenuOptionsData.TrueWordColor = 8;
                         break;
                     case 9:
-                        MenuOptionsData.EnterTrueWordColor((ConsoleColor)(9));
+                        MenuOptionsData.TrueWordColor = 9;
                         break;
                     case 10:
-                        MenuOptionsData.EnterTrueWordColor((ConsoleColor)(10));
+                        MenuOptionsData.TrueWordColor = 10;
                         break;
                 }
                 Console.Clear();
