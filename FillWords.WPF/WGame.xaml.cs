@@ -70,15 +70,7 @@ namespace FillWords.WPF
             }
             ActualWord.CoordsX.Clear();
             ActualWord.CoordsY.Clear();
-        }
-        private void BtnSaveAndExit_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.fileWorker.CreateSave(Game.Gamer);
-            mainWindow.fileWorker.WriteRecord(Game.Gamer);
-            mainWindow.Show();
-            this.Close();
-        }
+        }     
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             Field.Width = e.NewSize.Width / 3 * 2;
@@ -88,7 +80,22 @@ namespace FillWords.WPF
 
         private void SetLNameContent()
         {
-            LName.Content = $"{Game.Gamer.Name}\nОчки: {Game.Gamer.Scores}";
+            LName.Content = $"{Game.Gamer.Name}\n{Game.Gamer.Scores}";
+        }
+        private void CloseGame()
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.fileWorker.CreateSave(Game.Gamer);
+            mainWindow.fileWorker.WriteRecord(Game.Gamer);
+            mainWindow.Show();
+        }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            CloseGame();
+        }
+        private void BtnSaveAndExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
