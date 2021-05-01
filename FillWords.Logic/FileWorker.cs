@@ -62,7 +62,6 @@ namespace FillWords.Logic
             FileStream fs = File.Create(path);
             fs.Close();
             File.AppendAllText(path, $"{gamer.Name} {gamer.Scores} {(int)MenuOptionsData.TableColor} {(int)MenuOptionsData.CursorColor} {(int)MenuOptionsData.WordColor} {(int)MenuOptionsData.TrueWordColor} {(int)MenuOptionsData.TableHeight} {(int)MenuOptionsData.TableWidth}");
-
         }
         public void WriteRecord(GamerInfo gamer)
         {
@@ -94,13 +93,17 @@ namespace FillWords.Logic
         void BubbleSort(string[] records)
         {
             for (int i = 0; i < records.Length; i++)
+            {
                 for (int j = 0; j < records.Length - 1; j++)
+                {
                     if (int.Parse(records[j].Split(" ")[3]) < int.Parse(records[j + 1].Split(" ")[3]))
                     {
                         string t = records[j + 1];
                         records[j + 1] = records[j].Replace(records[j].Split(" ")[0], records[j + 1].Split(" ")[0]);
                         records[j] = t.Replace(t.Split(" ")[0], records[j].Split(" ")[0]);
                     }
+                }
+            }
         }
         public bool CheckNameInSaves(string name)
         {
