@@ -17,26 +17,30 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Canvas x:Name="Field"
-                Grid.ColumnSpan="2" Grid.Row="0">
+        <Canvas x:Name="canvas"
+                Grid.ColumnSpan="2" 
+                Grid.Row="0">
         </Canvas>
         <Viewbox  Grid.Row="1">
-        <StackPanel>
-            <Button FontSize="20"
-                    Click="BtnCancel_Click"
-                    IsCancel="True">Отменить
-            </Button>
-            <Button FontSize="20"
-                    Click="BtnSaveAndExit_Click">Сохранить и выйти
-            </Button>
-        </StackPanel>
+            <StackPanel>
+                <Button x:Name="btnCancel"
+                        FontSize="20"
+                        IsCancel="True">Отменить
+                </Button>
+                <Button FontSize="20"
+                        Click="BtnSaveAndExit_Click">Сохранить и выйти
+                </Button>
+            </StackPanel>
         </Viewbox>
         <Viewbox Grid.Column="2">
-            <Label x:Name="LName"
+            <Label x:Name="lInfo"
                    HorizontalContentAlignment="Center"
                    VerticalContentAlignment="Center">
             </Label>
         </Viewbox>
-        <TextBlock Grid.Column="1" x:Name="tbWords" Grid.Row="1"></TextBlock>
+        <TextBlock x:Name="tbWords"
+                   Grid.Column="1"
+                   Grid.Row="1">
+        </TextBlock>
     </Grid>
 </Window>

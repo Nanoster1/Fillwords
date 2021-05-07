@@ -21,6 +21,8 @@ namespace FillWords.WPF
         public Options()
         {
             InitializeComponent();
+            SetSliders();
+            SetCells();
         }
         private void Click_SaveOpt(object sender, RoutedEventArgs e)
         {
@@ -44,26 +46,42 @@ namespace FillWords.WPF
                 this.Close();
             }
         }
+        
+        private void SetSliders()
+        {
+            slCursorColor.Value = MenuOptionsData.CursorColor;
+            slTableColor.Value = MenuOptionsData.TableColor;
+            slWordColor.Value = MenuOptionsData.WordColor;
+            slTrueWordColor.Value = MenuOptionsData.TrueWordColor;
+        }
+
+        private void SetCells()
+        {
+            enableCell.Background = Field.Colors[MenuOptionsData.CursorColor];
+            enableCell.Foreground = Field.Colors[MenuOptionsData.TrueWordColor];
+            standartCell.Background = Field.Colors[MenuOptionsData.TableColor];
+            standartCell.Foreground = Field.Colors[MenuOptionsData.WordColor];
+        }
 
         private void SliderCursorColor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             MenuOptionsData.CursorColor = (int)e.NewValue;
-            EnableCell.Background = RenderField.Colors[MenuOptionsData.CursorColor];
+            enableCell.Background = Field.Colors[MenuOptionsData.CursorColor];
         }
         private void SliderTrueWordColor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             MenuOptionsData.TrueWordColor = (int)e.NewValue;
-            EnableCell.Foreground = RenderField.Colors[MenuOptionsData.TrueWordColor];
+            enableCell.Foreground = Field.Colors[MenuOptionsData.TrueWordColor];
         }
         private void SliderTableColor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             MenuOptionsData.TableColor = (int)e.NewValue;
-            StandartCell.Background = RenderField.Colors[MenuOptionsData.TableColor];
+            standartCell.Background = Field.Colors[MenuOptionsData.TableColor];
         }
         private void SliderWordColor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             MenuOptionsData.WordColor = (int)e.NewValue;
-            StandartCell.Foreground = RenderField.Colors[MenuOptionsData.WordColor];
+            standartCell.Foreground = Field.Colors[MenuOptionsData.WordColor];
         }
     }
 }

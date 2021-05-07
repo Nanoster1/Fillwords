@@ -70,7 +70,7 @@ namespace FillWords.WPF
                 this.Close();
             }
             else
-                tbxName2.Text = "Игрока с таким именем не существует"; 
+                tbxName2.Text = "Игрока не существует"; 
         }
         private void BtnCheckSaves_Click(object sender, RoutedEventArgs e)
         {
