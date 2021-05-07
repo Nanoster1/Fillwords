@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FillWords.WPF"
         mc:Ignorable="d"
-        Title="Records" Height="600" Width="1000">
+        Title="Records" Height="600" Width="1000" Closing="Window_Closing">
     <Grid Background="Black">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>

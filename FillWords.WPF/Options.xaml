@@ -22,7 +22,7 @@
         <Viewbox  Grid.Row="0" Grid.RowSpan="2" Grid.Column="1">
             <Border BorderBrush="White" BorderThickness="1">
                 <Label 
-                    x:Name="StandartCell"
+                    x:Name="standartCell"
                     Background="Black"
                     Foreground="White">A
                 </Label>
@@ -31,7 +31,7 @@
         <Viewbox  Grid.Row="2" Grid.RowSpan="2" Grid.Column="1">
             <Border BorderBrush="White" BorderThickness="1">
                 <Label
-                    x:Name="EnableCell"
+                    x:Name="enableCell"
                     Background="Chocolate"
                     Foreground="GreenYellow">A
                 </Label>
@@ -53,22 +53,7 @@
             <StackPanel Orientation="Horizontal">
                 <Label Foreground="White">Цвет выбранных букв</Label>
                 <Slider
-                    Value="4"
-                    VerticalAlignment="Center"
-                    MinWidth="70"  
-                    Maximum="9" Minimum="0" 
-                    Orientation="Horizontal" 
-                    IsSnapToTickEnabled="True" 
-                    IsSelectionRangeEnabled="True"
-                    ValueChanged="SliderCursorColor_ValueChanged">
-                </Slider>
-            </StackPanel>
-        </Viewbox>
-        <Viewbox Grid.Row="2" Grid.Column="0">
-            <StackPanel Orientation="Horizontal">
-                <Label Foreground="White">Цвет выбранной ячейки</Label>
-                <Slider
-                    Value="5"
+                    x:Name="slTrueWordColor"
                     VerticalAlignment="Center"
                     MinWidth="70"  
                     Maximum="9" Minimum="0" 
@@ -79,11 +64,26 @@
                 </Slider>
             </StackPanel>
         </Viewbox>
+        <Viewbox Grid.Row="2" Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="White">Цвет выбранной ячейки</Label>
+                <Slider
+                    x:Name="slCursorColor"
+                    VerticalAlignment="Center"
+                    MinWidth="70"  
+                    Maximum="9" Minimum="0" 
+                    Orientation="Horizontal" 
+                    IsSnapToTickEnabled="True" 
+                    IsSelectionRangeEnabled="True"
+                    ValueChanged="SliderCursorColor_ValueChanged">
+                </Slider>
+            </StackPanel>
+        </Viewbox>
         <Viewbox Grid.Row="1" Grid.Column="0">
             <StackPanel Orientation="Horizontal">
                 <Label Foreground="White">Цвет букв</Label>
                 <Slider
-                    Value="2"
+                    x:Name="slWordColor"
                     VerticalAlignment="Center"
                     MinWidth="70"  
                     Maximum="9" Minimum="0" 
@@ -98,7 +98,7 @@
             <StackPanel Orientation="Horizontal">
                 <Label Foreground="White">Цвет ячейки</Label>
                 <Slider
-                    Value="3"
+                    x:Name="slTableColor"
                     VerticalAlignment="Center"
                     MinWidth="70"  
                     Maximum="9" Minimum="0" 

@@ -39,5 +39,11 @@ namespace FillWords.WPF
             }
             return stringBuilder.ToString();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+        }
     }
 }
