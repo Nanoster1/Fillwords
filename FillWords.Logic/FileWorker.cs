@@ -66,9 +66,13 @@ namespace FillWords.Logic
         public void WriteRecord(GamerInfo gamer)
         {
             int k = 0;
-            if (CheckInRecords(gamer.Name, gamer.Scores, Records, ref k))
+            if (CheckInRecords(gamer.Name, gamer.Scores, Records, ref k) == 1)
             {
                 Records[k] = $"{Records[k].Split(" ")[0]} {gamer.Name} - {gamer.Scores} ";
+                BubbleSort(Records);
+            }
+            else if(CheckInRecords(gamer.Name, gamer.Scores, Records, ref k) == 0)
+            {
                 BubbleSort(Records);
             }
             else if (gamer.Scores > int.Parse(Records[9].Split(" ")[3]))
@@ -78,17 +82,21 @@ namespace FillWords.Logic
             }
             File.WriteAllLines(Environment.CurrentDirectory + "\\Records.txt", Records);
         }
-        bool CheckInRecords(string name, int scores, string[] records, ref int k)
+        int CheckInRecords(string name, int scores, string[] records, ref int k)
         {
             for (int i = 0; i < records.Length; i++)
             {
                 if (name == records[i].Split(" ")[1] && scores > int.Parse(records[i].Split(" ")[3]))
                 {
                     k = i;
-                    return true;
+                    return 1;
+                }
+                else if(name == records[i].Split(" ")[1])
+                {
+                    return 0;
                 }
             }
-            return false;
+            return -1;
         }
         void BubbleSort(string[] records)
         {

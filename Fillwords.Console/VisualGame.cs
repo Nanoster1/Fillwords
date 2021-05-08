@@ -58,18 +58,18 @@
         }
         public static void WriteTable(NewGame game)
         {
-            Console.BackgroundColor = MenuOptionsData.TableColor;
+            Console.BackgroundColor = (ConsoleColor)MenuOptionsData.TableColor;
             for (int y1 = 0; y1 < game.Gamer.Table.GetLength(0); y1++)
             {
                 for (int x1 = 0; x1 < game.Gamer.Table.GetLength(1); x1++)
                 {
-                    Console.ForegroundColor = MenuOptionsData.WordColor;
+                    Console.ForegroundColor = (ConsoleColor)MenuOptionsData.WordColor;
                     if (x1 == x && y1 == y)
-                        Console.ForegroundColor = MenuOptionsData.CursorColor;
+                        Console.ForegroundColor = (ConsoleColor)MenuOptionsData.CursorColor;
                     else if (NewGame.CheckLetter(x1, y1, SelectedWord))
-                        Console.ForegroundColor = MenuOptionsData.TrueWordColor;
+                        Console.ForegroundColor = (ConsoleColor)MenuOptionsData.TrueWordColor;
                     else if (NewGame.CheckInWords(x1, y1, game))
-                        Console.ForegroundColor = MenuOptionsData.TrueWordColor;
+                        Console.ForegroundColor = (ConsoleColor)MenuOptionsData.TrueWordColor;
                     Console.Write(game.Gamer.Table[y1, x1]);
                 }
                 Console.WriteLine();
