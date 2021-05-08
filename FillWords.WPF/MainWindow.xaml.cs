@@ -64,7 +64,8 @@ namespace FillWords.WPF
             if (fileWorker.CheckNameInSaves(tbxName2.Text))
             {
                 NewGame game = new NewGame(fileWorker.GetOneSave("Saves\\" + tbxName2.Text + ".txt"));
-                game.GetNextLvl();
+                game.Gamer.SetTable(GameTable.CreateTable());
+                game.ScoresForLvl = GameTable.Words.Count;
                 WGame winWGame = new WGame(game);
                 winWGame.Show();
                 this.Close();

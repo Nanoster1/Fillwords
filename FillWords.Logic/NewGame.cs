@@ -9,7 +9,7 @@ namespace FillWords.Logic
     {
         public GamerInfo Gamer { get; private set; }
         public List<Word> Words { get; private set; } = new List<Word>(); //Угаданные слова
-        public int ScoresForLvl { get; private set; }
+        public int ScoresForLvl { get; set; }
         public NewGame(GamerInfo gamer)
         {
             Gamer = gamer;

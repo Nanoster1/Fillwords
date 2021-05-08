@@ -102,29 +102,39 @@ namespace FillWords.WPF
         }
         private void Letter_Click(object sender, MouseEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
+            ActualWord.CoordsX.Add(Canvas.Children.IndexOf(sender as Label) % MenuOptionsData.TableWidth);
+            ActualWord.CoordsY.Add(Canvas.Children.IndexOf(sender as Label) / MenuOptionsData.TableWidth);
+            (sender as Label).Background = Colors[MenuOptionsData.CursorColor];
+            (sender as Label).Foreground = Colors[MenuOptionsData.TrueWordColor];
+            (sender as Label).RemoveHandler(Label.MouseLeftButtonDownEvent, new MouseButtonEventHandler(Letter_Click));
+            if (Game.CheckWord(ActualWord))
             {
-                (sender as Label).RemoveHandler(Label.MouseMoveEvent, new MouseEventHandler(Letter_Click));
-                ActualWord.CoordsX.Add(Canvas.Children.IndexOf(sender as Label) % MenuOptionsData.TableWidth);
-                ActualWord.CoordsY.Add(Canvas.Children.IndexOf(sender as Label) / MenuOptionsData.TableWidth);
-                (sender as Label).Background = Colors[FillWords.Logic.MenuOptionsData.CursorColor];
-                if (Game.CheckWord(ActualWord))
+                for (int i = 0; i < ActualWord.CoordsX.Count; i++)
                 {
-                    for (int i = 0; i < ActualWord.CoordsX.Count; i++)
-                    {
-                        int index = ActualWord.CoordsY[i] * MenuOptionsData.TableWidth + ActualWord.CoordsX[i];
-                        Label cell = Canvas.Children[index] as Label;
-                        cell.Background = Colors[FillWords.Logic.MenuOptionsData.TrueWordColor];
-                    }
-                    ActualWord.CoordsX.Clear();
-                    ActualWord.CoordsY.Clear();
+                    int index = ActualWord.CoordsY[i] * MenuOptionsData.TableWidth + ActualWord.CoordsX[i];
+                    Label cell = Canvas.Children[index] as Label;
+                    cell.Background = Brushes.DarkViolet;
                 }
-                if (Game.GetNextLvl())
+                ActualWord.CoordsX.Clear();
+                ActualWord.CoordsY.Clear();
+            }
+            if (Game.GetNextLvl())
+            {
+                Canvas.Children.Clear();
+                CreateField(Game, Canvas);
+                AddLabelHandlers();
+                SetLNameContent();
+            }
+        }
+        private void ResetLabelHandlers()
+        {
+            for (int i = 0; i < Canvas.Children.Count; i++)
+            {
+                if ((Canvas.Children[i] as Label).Background == Brushes.DarkSalmon)
                 {
-                    Canvas.Children.Clear();
-                    CreateField(Game, Canvas);
-                    AddLabelHandlers();
-                    SetLNameContent();
+                    Canvas.Children[i].AddHandler(Label.MouseLeftButtonDownEvent, new MouseButtonEventHandler(Letter_Click));
+                    (Canvas.Children[i] as Label).Background = Colors[MenuOptionsData.TableColor];
+                    (Canvas.Children[i] as Label).Foreground = Colors[MenuOptionsData.WordColor];
                 }
             }
         }
@@ -140,11 +150,12 @@ namespace FillWords.WPF
             for (int i = 0; i < ActualWord.CoordsX.Count; i++)
             {
                 int index = ActualWord.CoordsY[i] * MenuOptionsData.TableWidth + ActualWord.CoordsX[i];
-                (Canvas.Children[index] as Label).Background = Colors[FillWords.Logic.MenuOptionsData.TableColor];
+                (Canvas.Children[index] as Label).Background = Brushes.DarkSalmon; //Colors[MenuOptionsData.TableColor]
+                                                                                   //Colors[MenuOptionsData.WordColor];
             }
             ActualWord.CoordsX.Clear();
             ActualWord.CoordsY.Clear();
-            AddLabelHandlers();
+            ResetLabelHandlers();
         }
         private void SetLNameContent()
         {
