@@ -10,7 +10,7 @@ namespace FillWords.Logic
         public static List<string> UsedWords { get; private set; } = new List<string>();
         static Stack<int> Coords { get; set; } = new Stack<int>();
         public static List<Word> Words { get; private set; } = new List<Word>();
-        static readonly string[] dictionary = File.ReadAllLines(Environment.CurrentDirectory + "\\Dictionary.txt");
+        static readonly string[] dictionary = File.ReadAllLines(FileWorker.DictionaryPath);
         static bool CleanAr(char[,] table, int positionX, int positionY) //Проверка на пустой элемент массива
         {
             return table[positionY, positionX] == '\0';
@@ -144,14 +144,14 @@ namespace FillWords.Logic
         }
         static bool CheckFullElem(char[,] table, int positionX, int positionY, int tableWidth, int tableHeight)
         {
-            if ((!TruePos(tableWidth - 1, tableHeight - 1, positionX, positionY + 1) || table[positionY + 1, positionX] != '\0') && 
-                (!TruePos(tableWidth - 1, tableHeight - 1, positionX, positionY - 1) || table[positionY - 1, positionX] != '\0') && 
-                (!TruePos(tableWidth - 1, tableHeight - 1, positionX + 1, positionY) || table[positionY, positionX + 1] != '\0') && 
+            if ((!TruePos(tableWidth - 1, tableHeight - 1, positionX, positionY + 1) || table[positionY + 1, positionX] != '\0') &&
+                (!TruePos(tableWidth - 1, tableHeight - 1, positionX, positionY - 1) || table[positionY - 1, positionX] != '\0') &&
+                (!TruePos(tableWidth - 1, tableHeight - 1, positionX + 1, positionY) || table[positionY, positionX + 1] != '\0') &&
                 (!TruePos(tableWidth - 1, tableHeight - 1, positionX - 1, positionY) || table[positionY, positionX - 1] != '\0'))
                 return true;
             else return false;
         }
-        static bool NormalAr(char[,] table, int tableWidth, int tableHeight, int positionY, int positionX) 
+        static bool NormalAr(char[,] table, int tableWidth, int tableHeight, int positionY, int positionX)
         {
             return (TruePos(tableWidth, tableHeight, positionX, positionY) && CleanAr(table, positionX, positionY));
         }

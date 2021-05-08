@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+
 using FillWords.Logic;
 
 namespace FillWords.WPF
@@ -25,8 +26,6 @@ namespace FillWords.WPF
         }
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
             this.Close();
         }
         private string GetRecords()

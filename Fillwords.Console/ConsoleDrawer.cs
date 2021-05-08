@@ -1,10 +1,11 @@
 ﻿namespace Fillwords.Console
 {
     using System;
+
     using FillWords.Logic;
     public static class Drawer
     {
-        static FileWorker files = new FileWorker();
+        static readonly FileWorker files = new FileWorker();
         public static void DrawTitle()
         {
             string[] gameName = {"██████████  ████  ████       ████      ████   ████   ████   ██████████   ███████████  ███████████    █████",
@@ -143,7 +144,7 @@
         public static void DrawContinueMenu()
         {
             Console.Clear();
-            string[] text  = { " ██████  █████  ██    ██ ███████  ██████" ,
+            string[] text = { " ██████  █████  ██    ██ ███████  ██████" ,
                                "██      ██   ██ ██    ██ ██      ██     " ,
                                " █████  ███████  ██  ██  █████    █████ " ,
                                "     ██ ██   ██   ████   ██           ██" ,
@@ -163,7 +164,7 @@
                     k += 10;
                 }
             }
-            Console.SetCursorPosition(Console.WindowWidth/2 - text[0].Length / 3, 20);
+            Console.SetCursorPosition(Console.WindowWidth / 2 - text[0].Length / 3, 20);
             Console.Write("Enter your nickname: ");
         }
     }

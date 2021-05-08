@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 using FillWords.Logic;
 
 namespace FillWords.WPF
@@ -63,14 +64,15 @@ namespace FillWords.WPF
         {
             if (fileWorker.CheckNameInSaves(tbxName2.Text))
             {
-                NewGame game = new NewGame(fileWorker.GetOneSave("Saves\\" + tbxName2.Text + ".txt"));
-                game.GetNextLvl();
+                NewGame game = new NewGame(fileWorker.GetOneSave(tbxName2.Text));
+                game.Gamer.SetTable(GameTable.CreateTable());
+                game.ScoresForLvl = GameTable.Words.Count;
                 WGame winWGame = new WGame(game);
                 winWGame.Show();
                 this.Close();
             }
             else
-                tbxName2.Text = "Игрока не существует"; 
+                tbxName2.Text = "Игрока не существует";
         }
         private void BtnCheckSaves_Click(object sender, RoutedEventArgs e)
         {
@@ -103,8 +105,8 @@ namespace FillWords.WPF
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-           for (int i = 0; i < spMenu.Children.Count; i++)
-           {
+            for (int i = 0; i < spMenu.Children.Count; i++)
+            {
                 if (spMenu.Children[i] is Button)
                 {
                     Button button = spMenu.Children[i] as Button;
@@ -122,7 +124,7 @@ namespace FillWords.WPF
                         (panel.Children[k] as Control).FontSize = (panel.Children[k] as Control).Width * (panel.Children[k] as Control).Height / 800;
                     }
                 }
-           }
+            }
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
@@ -10,12 +10,6 @@
     <None Remove="Resources\MainWindow\Logo.png" />
     <None Remove="Resources\Records\Fire.png" />
     <None Remove="Resources\Records\Top.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="FillWords.Logic">
-      <HintPath>..\FillWords.Logic\bin\Debug\netcoreapp3.1\FillWords.Logic.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +22,16 @@
     <Resource Include="Resources\Records\Top.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Dictionary.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FillWords.Logic\FillWords.Logic.csproj" />
   </ItemGroup>
 
 </Project>

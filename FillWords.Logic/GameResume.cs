@@ -14,7 +14,7 @@ namespace FillWords.Logic
             {
                 string[] ar = saves[i].Split("\\");
                 if (name == ar[^1].Split('.')[0])
-                    return new NewGame(files.GetOneSave(saves[i]));
+                    return new NewGame(files.GetOneSave(saves[i].Replace(".txt", string.Empty)));
             }
             return null;
         }

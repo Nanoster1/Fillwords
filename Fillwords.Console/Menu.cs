@@ -1,6 +1,7 @@
 ﻿namespace Fillwords.Console
 {
     using System;
+
     using FillWords.Logic;
     static class Menu
     {

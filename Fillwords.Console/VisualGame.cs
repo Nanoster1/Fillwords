@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
     using System.Threading;
+
     using FillWords.Logic;
     public static class VisualGame
     {
@@ -11,7 +12,7 @@
         static int x = 0;
         static int y = 0;
         static List<string> usedWords = new List<string>();
-        static FileWorker files = new FileWorker();
+        static readonly FileWorker files = new FileWorker();
         public static string Greetings()
         {
             Console.Clear();
@@ -58,27 +59,23 @@
         }
         public static void WriteTable(NewGame game)
         {
-            Console.BackgroundColor = MenuOptionsData.TableColor;
+            Console.BackgroundColor = (ConsoleColor)MenuOptionsData.TableColor;
             for (int y1 = 0; y1 < game.Gamer.Table.GetLength(0); y1++)
             {
                 for (int x1 = 0; x1 < game.Gamer.Table.GetLength(1); x1++)
                 {
-                    Console.ForegroundColor = MenuOptionsData.WordColor;
+                    Console.ForegroundColor = (ConsoleColor)MenuOptionsData.WordColor;
                     if (x1 == x && y1 == y)
-                        Console.ForegroundColor = MenuOptionsData.CursorColor;
+                        Console.ForegroundColor = (ConsoleColor)MenuOptionsData.CursorColor;
                     else if (NewGame.CheckLetter(x1, y1, SelectedWord))
-                        Console.ForegroundColor = MenuOptionsData.TrueWordColor;
+                        Console.ForegroundColor = (ConsoleColor)MenuOptionsData.TrueWordColor;
                     else if (NewGame.CheckInWords(x1, y1, game))
-                        Console.ForegroundColor = MenuOptionsData.TrueWordColor;
+                        Console.ForegroundColor = (ConsoleColor)MenuOptionsData.TrueWordColor;
                     Console.Write(game.Gamer.Table[y1, x1]);
                 }
                 Console.WriteLine();
             }
             Console.ForegroundColor = ConsoleColor.White;
-            for (int i = 0; i < GameTable.UsedWords.Count; i++)
-            {
-                Console.WriteLine(GameTable.UsedWords[i]);
-            }
             Console.SetCursorPosition(20, 10);
             Console.Write($"Scores: {game.Gamer.Scores}");
         }

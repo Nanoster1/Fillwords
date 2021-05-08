@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+
 using FillWords.Logic;
 
 namespace FillWords.WPF
@@ -13,9 +14,9 @@ namespace FillWords.WPF
         {
             InitializeComponent();
             Game = game;
-            Field = new Field(canvas, game, tbWords, lInfo);
+            Field = new Field(canvas, game, lInfo);
             btnCancel.Click += Field.BtnCancel_Click;
-        }  
+        }
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             canvas.Width = e.NewSize.Width / 3 * 2;

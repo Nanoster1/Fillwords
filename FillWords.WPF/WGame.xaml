@@ -38,9 +38,5 @@
                    VerticalContentAlignment="Center">
             </Label>
         </Viewbox>
-        <TextBlock x:Name="tbWords"
-                   Grid.Column="1"
-                   Grid.Row="1">
-        </TextBlock>
     </Grid>
 </Window>
